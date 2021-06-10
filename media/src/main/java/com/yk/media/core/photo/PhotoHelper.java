@@ -9,6 +9,8 @@ import android.media.ImageReader;
 import android.os.Handler;
 import android.os.HandlerThread;
 
+import com.yk.media.opengles.view.CameraView;
+
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 
@@ -16,6 +18,25 @@ import javax.microedition.khronos.egl.EGLContext;
 
 public class PhotoHelper {
     private PhotoRenderThread photoRenderThread;
+
+    private CameraView cameraView;
+
+    public void attachCameraView(CameraView cameraView) {
+        this.cameraView = cameraView;
+    }
+
+    public void takePhoto(OnPhotoListener onPhotoListener) {
+        if (cameraView == null) {
+            return;
+        }
+        takePhoto(cameraView.getContext(),
+                cameraView.getEglContext(),
+                cameraView.getFboTextureId(),
+                cameraView.getCameraManager().getPreviewSize().getHeight(),
+                cameraView.getCameraManager().getPreviewSize().getWidth(),
+                onPhotoListener
+        );
+    }
 
     public void takePhoto(Context context,
                           EGLContext eglContext, int textureId,

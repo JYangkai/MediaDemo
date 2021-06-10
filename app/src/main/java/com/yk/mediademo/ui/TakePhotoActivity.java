@@ -49,6 +49,7 @@ public class TakePhotoActivity extends AppCompatActivity implements IActivityIni
     @Override
     public void initData() {
         initPath();
+        photoHelper.attachCameraView(cameraView);
     }
 
     private void initPath() {
@@ -66,11 +67,6 @@ public class TakePhotoActivity extends AppCompatActivity implements IActivityIni
             @Override
             public void onClick(View v) {
                 photoHelper.takePhoto(
-                        TakePhotoActivity.this,
-                        cameraView.getEglContext(),
-                        cameraView.getFboTextureId(),
-                        cameraView.getCameraManager().getPreviewSize().getHeight(),
-                        cameraView.getCameraManager().getPreviewSize().getWidth(),
                         new OnPhotoListener() {
                             @Override
                             public void onPhoto(Bitmap bitmap) {

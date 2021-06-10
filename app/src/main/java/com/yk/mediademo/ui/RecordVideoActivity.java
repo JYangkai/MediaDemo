@@ -48,6 +48,7 @@ public class RecordVideoActivity extends AppCompatActivity implements IActivityI
     @Override
     public void initData() {
         initPath();
+        videoRecorder.attachCameraView(cameraView);
     }
 
     private void initPath() {
@@ -107,14 +108,7 @@ public class RecordVideoActivity extends AppCompatActivity implements IActivityI
     }
 
     private void startRecord() {
-        videoRecorder.startWithDefaultParams(
-                RecordVideoActivity.this,
-                cameraView.getEglContext(),
-                cameraView.getFboTextureId(),
-                cameraView.getCameraManager().getCameraFacing(),
-                cameraView.getCameraManager().getPreviewSize().getHeight(),
-                cameraView.getCameraManager().getPreviewSize().getWidth(),
-                path);
+        videoRecorder.startWithDefaultParams(path);
     }
 
     @Override

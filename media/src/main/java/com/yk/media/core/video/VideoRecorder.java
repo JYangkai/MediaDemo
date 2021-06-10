@@ -16,6 +16,7 @@ import com.yk.media.core.video.params.MicParam;
 import com.yk.media.core.video.params.RecordParam;
 import com.yk.media.core.video.params.VideoEncodeParam;
 import com.yk.media.opengles.egl.EglHelper;
+import com.yk.media.opengles.view.CameraView;
 import com.yk.media.opengles.view.base.EGLTextureView;
 
 import java.io.IOException;
@@ -39,6 +40,27 @@ public class VideoRecorder {
     private Surface surface;
 
     private OnRecordListener onRecordListener;
+
+    private CameraView cameraView;
+
+    public void attachCameraView(CameraView cameraView) {
+        this.cameraView = cameraView;
+    }
+
+    public void startWithDefaultParams(String path) {
+        if (cameraView == null) {
+            return;
+        }
+        startWithDefaultParams(
+                cameraView.getContext(),
+                cameraView.getEglContext(),
+                cameraView.getFboTextureId(),
+                cameraView.getCameraManager().getCameraFacing(),
+                cameraView.getCameraManager().getPreviewSize().getHeight(),
+                cameraView.getCameraManager().getPreviewSize().getWidth(),
+                path
+        );
+    }
 
     public void startWithDefaultParams(Context context, EGLContext eglContext, int textureId,
                                        int facing, int width, int height, String path) {
