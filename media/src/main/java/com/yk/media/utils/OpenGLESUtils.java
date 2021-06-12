@@ -11,6 +11,7 @@ import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import android.opengl.Matrix;
+import android.os.Build;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.Log;
@@ -243,17 +244,33 @@ public class OpenGLESUtils {
         return mMVPMatrix;
     }
 
-    /**
-     * 获取图片的旋转方向
-     */
-    public static int getImageOrientation(String path) {
-        int degree = 0;
+    public static ExifInterface getExifInterfaceFromPath(String path) {
         ExifInterface exifInterface = null;
         try {
             exifInterface = new ExifInterface(path);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return exifInterface;
+    }
+
+    public static ExifInterface getExifInterfaceFromIs(InputStream is) {
+        ExifInterface exifInterface = null;
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                exifInterface = new ExifInterface(is);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return exifInterface;
+    }
+
+    /**
+     * 获取图片的旋转方向
+     */
+    public static int getImageOrientation(ExifInterface exifInterface) {
+        int degree = 0;
         if (exifInterface == null) {
             return degree;
         }
@@ -283,10 +300,29 @@ public class OpenGLESUtils {
             return null;
         }
         Bitmap sourceBitmap = BitmapFactory.decodeFile(path);
-        int degree = getImageOrientation(path);
+        int degree = getImageOrientation(getExifInterfaceFromPath(path));
         android.graphics.Matrix matrix = new android.graphics.Matrix();
         matrix.postRotate(degree);
         return Bitmap.createBitmap(sourceBitmap, 0, 0, sourceBitmap.getWidth(), sourceBitmap.getHeight(), matrix, true);
+    }
+
+    public static Bitmap getBitmapFromAssets(Context context, String fileName) {
+        if (TextUtils.isEmpty(fileName)) {
+            return null;
+        }
+        Bitmap bitmap = null;
+        try {
+            InputStream is = context.getAssets().open(fileName);
+            Bitmap sourceBitmap = BitmapFactory.decodeStream(is);
+            int degree = getImageOrientation(getExifInterfaceFromIs(is));
+            android.graphics.Matrix matrix = new android.graphics.Matrix();
+            matrix.postRotate(degree);
+            bitmap = Bitmap.createBitmap(sourceBitmap, 0, 0, sourceBitmap.getWidth(), sourceBitmap.getHeight(), matrix, true);
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bitmap;
     }
 
     /**
