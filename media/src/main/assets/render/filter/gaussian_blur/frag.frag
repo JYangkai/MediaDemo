@@ -18,7 +18,7 @@ void main(){
     }
 
     finalColor /= 2.0;
-    finalColor += 0.1;
+    finalColor += 0.05;
 
     gl_FragColor = vec4(finalColor, sourceColor.a);
 }

@@ -29,6 +29,9 @@
         <activity
             android:name=".ui.RecordVideoActivity"
             android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".ui.ImageShowActivity"
+            android:theme="@style/FullscreenTheme" />
     </application>
 
 </manifest>
