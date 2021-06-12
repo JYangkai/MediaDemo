@@ -1,4 +1,4 @@
-package com.yk.media.opengles.render.bean;
+package com.yk.media.opengles.render.bean.base;
 
 import java.io.Serializable;
 

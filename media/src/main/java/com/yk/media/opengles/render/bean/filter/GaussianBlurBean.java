@@ -1,4 +1,7 @@
-package com.yk.media.opengles.render.bean;
+package com.yk.media.opengles.render.bean.filter;
+
+import com.yk.media.opengles.render.RenderConstants;
+import com.yk.media.opengles.render.bean.base.BaseRenderBean;
 
 public class GaussianBlurBean extends BaseRenderBean {
     /**
@@ -11,8 +14,8 @@ public class GaussianBlurBean extends BaseRenderBean {
      */
     private int blurRadius;
 
-    public GaussianBlurBean(int type, String name, int scaleRatio, int blurRadius) {
-        super(type, name);
+    public GaussianBlurBean(int scaleRatio, int blurRadius) {
+        super(RenderConstants.Filter.GAUSSIAN_BLUR, "高斯模糊");
         this.scaleRatio = scaleRatio;
         this.blurRadius = blurRadius;
     }

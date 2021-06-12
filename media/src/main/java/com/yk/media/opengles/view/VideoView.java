@@ -7,11 +7,18 @@ import android.util.AttributeSet;
 import com.yk.media.core.play.OnPlayListener;
 import com.yk.media.core.play.PlayManager;
 import com.yk.media.data.base.Size;
+import com.yk.media.opengles.render.OesRender;
+import com.yk.media.opengles.render.RenderConstants;
 import com.yk.media.opengles.render.base.OnSurfaceTextureListener;
-import com.yk.media.opengles.view.base.OesView;
+import com.yk.media.opengles.render.manager.RenderManager;
+import com.yk.media.opengles.view.base.EGLTextureView;
 
-public class VideoView extends OesView implements OnPlayListener {
+public class VideoView extends EGLTextureView implements OnPlayListener {
     private final PlayManager playManager = new PlayManager();
+
+    public OesRender render;
+
+    private final int process = RenderConstants.Process.VIDEO;
 
     public VideoView(Context context) {
         this(context, null);
@@ -19,6 +26,15 @@ public class VideoView extends OesView implements OnPlayListener {
 
     public VideoView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
+    }
+
+    private void init(Context context) {
+        setEGLContextClientVersion(2);
+        render = new OesRender(context, process);
+        setRenderer(render);
+        setRenderMode(EGLTextureView.RENDERMODE_WHEN_DIRTY);
+
         playManager.addOnPlayListener(this);
     }
 
@@ -86,5 +102,21 @@ public class VideoView extends OesView implements OnPlayListener {
 
     public PlayManager getPlayManager() {
         return playManager;
+    }
+
+    public int getFboTextureId() {
+        return render.getFboTextureId();
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        RenderManager.getInstance(getContext()).init(process);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        RenderManager.getInstance(getContext()).release(process);
     }
 }

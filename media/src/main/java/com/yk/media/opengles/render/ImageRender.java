@@ -6,10 +6,13 @@ import android.text.TextUtils;
 
 import com.yk.media.opengles.render.base.BaseImageRender;
 import com.yk.media.opengles.render.base.BaseRender;
+import com.yk.media.opengles.render.manager.RenderManager;
 import com.yk.media.utils.OpenGLESUtils;
 
 public class ImageRender implements Renderer {
     private final Context context;
+
+    private int process;
 
     private final BaseImageRender inputRender;
     private final BaseRender outputRender;
@@ -21,8 +24,12 @@ public class ImageRender implements Renderer {
 
     private boolean isUpdate = false;
 
-    public ImageRender(Context context) {
+    private int width;
+    private int height;
+
+    public ImageRender(Context context, int process) {
         this.context = context;
+        this.process = process;
         inputRender = new BaseImageRender(context);
         outputRender = new BaseRender(context);
     }
@@ -30,12 +37,16 @@ public class ImageRender implements Renderer {
     @Override
     public void onCreate() {
         inputRender.onCreate();
+        RenderManager.getInstance(context).onCreate(process);
         outputRender.onCreate();
     }
 
     @Override
     public void onChange(int width, int height) {
+        this.width = width;
+        this.height = height;
         inputRender.onChange(width, height);
+        RenderManager.getInstance(context).onChange(process);
         outputRender.onChange(width, height);
     }
 
@@ -45,7 +56,9 @@ public class ImageRender implements Renderer {
             return;
         }
         inputRender.onDraw(textureId);
-        outputRender.onDraw(inputRender.getFboTextureId());
+        int fboTextureId = inputRender.getFboTextureId();
+        fboTextureId = RenderManager.getInstance(context).onDraw(process, fboTextureId, width, height);
+        outputRender.onDraw(fboTextureId);
     }
 
     private boolean initTextureId() {

@@ -8,13 +8,20 @@ import android.util.AttributeSet;
 import com.yk.media.core.camera.CameraManager;
 import com.yk.media.core.camera.OnCameraListener;
 import com.yk.media.data.base.Size;
+import com.yk.media.opengles.render.OesRender;
+import com.yk.media.opengles.render.RenderConstants;
 import com.yk.media.opengles.render.base.OnSurfaceTextureListener;
-import com.yk.media.opengles.view.base.OesView;
+import com.yk.media.opengles.render.manager.RenderManager;
+import com.yk.media.opengles.view.base.EGLTextureView;
 
-public class CameraView extends OesView implements OnCameraListener {
+public class CameraView extends EGLTextureView implements OnCameraListener {
     private final CameraManager cameraManager = new CameraManager();
 
-    private final Activity activity;
+    private Activity activity;
+
+    public OesRender render;
+
+    private final int process = RenderConstants.Process.CAMERA;
 
     public CameraView(Context context) {
         this(context, null);
@@ -22,6 +29,15 @@ public class CameraView extends OesView implements OnCameraListener {
 
     public CameraView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
+    }
+
+    private void init(Context context) {
+        setEGLContextClientVersion(2);
+        render = new OesRender(context,process);
+        setRenderer(render);
+        setRenderMode(EGLTextureView.RENDERMODE_WHEN_DIRTY);
+
         activity = (Activity) context;
         cameraManager.addOnCameraListener(this);
     }
@@ -78,5 +94,21 @@ public class CameraView extends OesView implements OnCameraListener {
 
     public CameraManager getCameraManager() {
         return cameraManager;
+    }
+
+    public int getFboTextureId() {
+        return render.getFboTextureId();
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        RenderManager.getInstance(getContext()).init(process);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        RenderManager.getInstance(getContext()).release(process);
     }
 }

@@ -3,7 +3,7 @@ package com.yk.media.opengles.render.base;
 import android.content.Context;
 import android.opengl.GLES20;
 
-import com.yk.media.opengles.render.bean.BaseRenderBean;
+import com.yk.media.opengles.render.bean.base.BaseRenderBean;
 import com.yk.media.utils.OpenGLESUtils;
 
 import java.nio.FloatBuffer;

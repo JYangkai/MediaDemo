@@ -4,10 +4,10 @@ import android.content.Context;
 import android.opengl.GLES20;
 
 import com.yk.media.opengles.render.base.BaseRender;
-import com.yk.media.opengles.render.bean.BaseRenderBean;
-import com.yk.media.opengles.render.bean.GaussianBlurBean;
+import com.yk.media.opengles.render.bean.base.BaseRenderBean;
+import com.yk.media.opengles.render.bean.filter.GaussianBlurBean;
 
-public class GaussianBlurFilter extends BaseRender {
+public class GaussianBlurFilter extends BaseFilter {
     private final Scale scale;
     private final Blur horizontal;
     private final Blur vertical;
