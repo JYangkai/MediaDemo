@@ -34,5 +34,10 @@ public interface RenderConstants {
          * 灰度滤镜
          */
         int GRAY = 1;
+
+        /**
+         * 画中画
+         */
+        int PIP = 2;
     }
 }
