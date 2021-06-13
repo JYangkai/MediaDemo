@@ -49,6 +49,7 @@ public class FilterView extends FrameLayout {
     private void initData() {
         filterList = FilterUtils.FILTER_LIST;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         filterAdapter = new FilterAdapter(filterList);
         rvFilter.setLayoutManager(linearLayoutManager);
         rvFilter.setAdapter(filterAdapter);

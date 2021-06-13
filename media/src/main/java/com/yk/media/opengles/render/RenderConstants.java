@@ -29,5 +29,10 @@ public interface RenderConstants {
          * 高斯模糊
          */
         int GAUSSIAN_BLUR = 0;
+
+        /**
+         * 灰度滤镜
+         */
+        int GRAY = 1;
     }
 }
