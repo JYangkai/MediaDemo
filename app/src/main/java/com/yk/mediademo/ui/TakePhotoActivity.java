@@ -14,9 +14,14 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.yk.media.core.photo.OnPhotoListener;
 import com.yk.media.core.photo.PhotoHelper;
+import com.yk.media.opengles.render.RenderConstants;
+import com.yk.media.opengles.render.bean.base.BaseRenderBean;
+import com.yk.media.opengles.render.manager.RenderManager;
 import com.yk.media.opengles.view.CameraView;
 import com.yk.media.utils.OpenGLESUtils;
 import com.yk.mediademo.R;
+import com.yk.mediademo.data.adapter.FilterAdapter;
+import com.yk.mediademo.ui.widget.FilterView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,6 +29,7 @@ import java.io.FileNotFoundException;
 public class TakePhotoActivity extends AppCompatActivity implements IActivityInit {
 
     private CameraView cameraView;
+    private FilterView filterView;
     private AppCompatButton btnTakePhoto;
 
     private final PhotoHelper photoHelper = new PhotoHelper();
@@ -43,6 +49,7 @@ public class TakePhotoActivity extends AppCompatActivity implements IActivityIni
     @Override
     public void findView() {
         cameraView = findViewById(R.id.cameraView);
+        filterView = findViewById(R.id.filterView);
         btnTakePhoto = findViewById(R.id.btnTakePhoto);
     }
 
@@ -75,6 +82,18 @@ public class TakePhotoActivity extends AppCompatActivity implements IActivityIni
                             }
                         }
                 );
+            }
+        });
+        filterView.setOnClickFilterListener(new FilterAdapter.OnClickFilterListener() {
+            @Override
+            public void onClickFilter(BaseRenderBean filter) {
+                cameraView.queueEvent(new Runnable() {
+                    @Override
+                    public void run() {
+                        RenderManager.getInstance(TakePhotoActivity.this).setFilter(RenderConstants.Process.CAMERA, filter);
+                    }
+                });
+                cameraView.requestRender();
             }
         });
     }

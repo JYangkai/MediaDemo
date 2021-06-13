@@ -13,8 +13,13 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.yk.media.core.video.OnRecordListener;
 import com.yk.media.core.video.VideoRecorder;
+import com.yk.media.opengles.render.RenderConstants;
+import com.yk.media.opengles.render.bean.base.BaseRenderBean;
+import com.yk.media.opengles.render.manager.RenderManager;
 import com.yk.media.opengles.view.CameraView;
 import com.yk.mediademo.R;
+import com.yk.mediademo.data.adapter.FilterAdapter;
+import com.yk.mediademo.ui.widget.FilterView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,6 +27,7 @@ import java.io.FileNotFoundException;
 public class RecordVideoActivity extends AppCompatActivity implements IActivityInit {
 
     private CameraView cameraView;
+    private FilterView filterView;
     private AppCompatButton btnRecord;
 
     private final VideoRecorder videoRecorder = new VideoRecorder();
@@ -42,6 +48,7 @@ public class RecordVideoActivity extends AppCompatActivity implements IActivityI
     @Override
     public void findView() {
         cameraView = findViewById(R.id.cameraView);
+        filterView = findViewById(R.id.filterView);
         btnRecord = findViewById(R.id.btnRecord);
     }
 
@@ -99,6 +106,18 @@ public class RecordVideoActivity extends AppCompatActivity implements IActivityI
             @Override
             public void onRecordError(Exception e) {
 
+            }
+        });
+        filterView.setOnClickFilterListener(new FilterAdapter.OnClickFilterListener() {
+            @Override
+            public void onClickFilter(BaseRenderBean filter) {
+                cameraView.queueEvent(new Runnable() {
+                    @Override
+                    public void run() {
+                        RenderManager.getInstance(RecordVideoActivity.this).setFilter(RenderConstants.Process.CAMERA, filter);
+                    }
+                });
+                cameraView.requestRender();
             }
         });
     }

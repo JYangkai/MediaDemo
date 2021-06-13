@@ -9,13 +9,19 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
 
+    <com.yk.mediademo.ui.widget.FilterView
+        android:id="@+id/filterView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRecord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="32dp"
+        android:layout_margin="64dp"
         android:text="Record"
         android:textAllCaps="false" />
 
