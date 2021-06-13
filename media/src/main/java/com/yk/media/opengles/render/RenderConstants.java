@@ -26,6 +26,11 @@ public interface RenderConstants {
      */
     interface Filter {
         /**
+         * 原画
+         */
+        int NORMAL = -1;
+
+        /**
          * 高斯模糊
          */
         int GAUSSIAN_BLUR = 0;
