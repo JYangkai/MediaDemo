@@ -20,6 +20,7 @@ public class FilterUtils {
     static {
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.NORMAL, "原画"));
         FILTER_LIST.add(new GaussianBlurBean(1, 3));
+        FILTER_LIST.add(new GaussianBlurBean(300, 20));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.GRAY, "灰度滤镜"));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.PIP, "画中画"));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.MOTION_BLUR, "运动模糊"));
