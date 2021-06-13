@@ -44,5 +44,10 @@ public interface RenderConstants {
          * 画中画
          */
         int PIP = 2;
+
+        /**
+         * 运动模糊
+         */
+        int MOTION_BLUR = 3;
     }
 }

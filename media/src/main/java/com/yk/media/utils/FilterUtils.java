@@ -8,6 +8,7 @@ import com.yk.media.opengles.render.bean.filter.GaussianBlurBean;
 import com.yk.media.opengles.render.filter.BaseFilter;
 import com.yk.media.opengles.render.filter.GaussianBlurFilter;
 import com.yk.media.opengles.render.filter.GrayFilter;
+import com.yk.media.opengles.render.filter.MotionBlurFilter;
 import com.yk.media.opengles.render.filter.PipFilter;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class FilterUtils {
         FILTER_LIST.add(new GaussianBlurBean(1, 3));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.GRAY, "灰度滤镜"));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.PIP, "画中画"));
+        FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.MOTION_BLUR, "运动模糊"));
     }
 
     public static BaseFilter getFilter(Context context, BaseRenderBean bean) {
@@ -34,6 +36,9 @@ public class FilterUtils {
                 break;
             case RenderConstants.Filter.PIP:
                 filter = new PipFilter(context);
+                break;
+            case RenderConstants.Filter.MOTION_BLUR:
+                filter = new MotionBlurFilter(context);
                 break;
             default:
                 filter = new BaseFilter(context);
