@@ -23,6 +23,7 @@ import com.yk.mediademo.R;
 import com.yk.mediademo.data.adapter.FilterAdapter;
 import com.yk.mediademo.ui.base.IActivityInit;
 import com.yk.mediademo.ui.widget.FilterView;
+import com.yk.mediademo.utils.FolderUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -63,7 +64,7 @@ public class TakePhotoActivity extends AppCompatActivity implements IActivityIni
     }
 
     private void initPath() {
-        path = getExternalFilesDir("photo").getPath() + File.separator + System.currentTimeMillis() + "_photo.jpeg";
+        path = FolderUtils.getImageFolderPath(this) + System.currentTimeMillis() + "image.jpeg";
 
         File file = new File(path);
         if (file.exists()) {
