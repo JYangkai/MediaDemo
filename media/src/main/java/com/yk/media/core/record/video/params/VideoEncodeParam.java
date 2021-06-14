@@ -1,4 +1,4 @@
-package com.yk.media.core.video.params;
+package com.yk.media.core.record.video.params;
 
 import android.text.TextUtils;
 

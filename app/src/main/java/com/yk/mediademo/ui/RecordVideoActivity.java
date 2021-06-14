@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.yk.media.core.video.OnRecordListener;
-import com.yk.media.core.video.VideoRecorder;
+import com.yk.media.core.record.video.OnRecordListener;
+import com.yk.media.core.record.video.VideoRecorder;
 import com.yk.media.opengles.render.RenderConstants;
 import com.yk.media.opengles.render.bean.base.BaseRenderBean;
 import com.yk.media.opengles.render.manager.RenderManager;

@@ -1,4 +1,4 @@
-package com.yk.media.core.video;
+package com.yk.media.core.record.video;
 
 public interface OnRecordListener {
     /**

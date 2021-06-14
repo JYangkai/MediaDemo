@@ -1,4 +1,4 @@
-package com.yk.media.core.video;
+package com.yk.media.core.record.video;
 
 import android.content.Context;
 import android.media.AudioFormat;
@@ -10,11 +10,11 @@ import android.media.MediaMuxer;
 import android.os.Build;
 import android.view.Surface;
 
-import com.yk.media.core.video.params.AudioEncodeParam;
-import com.yk.media.core.video.params.CameraParam;
-import com.yk.media.core.video.params.MicParam;
-import com.yk.media.core.video.params.RecordParam;
-import com.yk.media.core.video.params.VideoEncodeParam;
+import com.yk.media.core.record.video.params.AudioEncodeParam;
+import com.yk.media.core.record.video.params.CameraParam;
+import com.yk.media.core.record.video.params.MicParam;
+import com.yk.media.core.record.video.params.RecordParam;
+import com.yk.media.core.record.video.params.VideoEncodeParam;
 import com.yk.media.opengles.egl.EglHelper;
 import com.yk.media.opengles.view.CameraView;
 import com.yk.media.opengles.view.base.EGLTextureView;
