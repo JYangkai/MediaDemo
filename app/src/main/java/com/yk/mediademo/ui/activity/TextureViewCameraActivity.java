@@ -1,4 +1,4 @@
-package com.yk.mediademo.ui;
+package com.yk.mediademo.ui.activity;
 
 import android.graphics.SurfaceTexture;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.yk.media.core.camera.CameraManager;
 import com.yk.mediademo.R;
+import com.yk.mediademo.ui.base.IActivityInit;
 
 public class TextureViewCameraActivity extends AppCompatActivity implements IActivityInit {
     private TextureView textureView;

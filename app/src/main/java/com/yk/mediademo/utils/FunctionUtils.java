@@ -2,10 +2,10 @@ package com.yk.mediademo.utils;
 
 import com.yk.mediademo.constants.Constants;
 import com.yk.mediademo.data.bean.Function;
-import com.yk.mediademo.ui.ImageShowActivity;
-import com.yk.mediademo.ui.RecordVideoActivity;
-import com.yk.mediademo.ui.TakePhotoActivity;
-import com.yk.mediademo.ui.TextureViewCameraActivity;
+import com.yk.mediademo.ui.activity.ImageShowActivity;
+import com.yk.mediademo.ui.activity.RecordVideoActivity;
+import com.yk.mediademo.ui.activity.TakePhotoActivity;
+import com.yk.mediademo.ui.activity.TextureViewCameraActivity;
 
 import java.util.ArrayList;
 import java.util.List;

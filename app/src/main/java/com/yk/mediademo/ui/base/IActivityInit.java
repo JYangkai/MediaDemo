@@ -1,4 +1,4 @@
-package com.yk.mediademo.ui;
+package com.yk.mediademo.ui.base;
 
 public interface IActivityInit {
     void findView();

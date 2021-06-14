@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.yk.mediademo.data.adapter.FunctionAdapter;
 import com.yk.mediademo.data.bean.Function;
-import com.yk.mediademo.ui.IActivityInit;
+import com.yk.mediademo.ui.base.IActivityInit;
 import com.yk.mediademo.utils.FunctionUtils;
 
 import java.util.ArrayList;

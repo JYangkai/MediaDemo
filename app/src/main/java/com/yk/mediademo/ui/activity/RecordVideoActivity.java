@@ -1,4 +1,4 @@
-package com.yk.mediademo.ui;
+package com.yk.mediademo.ui.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -19,6 +19,7 @@ import com.yk.media.opengles.render.manager.RenderManager;
 import com.yk.media.opengles.view.CameraView;
 import com.yk.mediademo.R;
 import com.yk.mediademo.data.adapter.FilterAdapter;
+import com.yk.mediademo.ui.base.IActivityInit;
 import com.yk.mediademo.ui.widget.FilterView;
 
 import java.io.File;

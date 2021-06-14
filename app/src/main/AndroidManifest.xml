@@ -24,16 +24,16 @@
         </activity>
 
         <activity
-            android:name=".ui.TextureViewCameraActivity"
+            android:name=".ui.activity.TextureViewCameraActivity"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".ui.TakePhotoActivity"
+            android:name=".ui.activity.TakePhotoActivity"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".ui.RecordVideoActivity"
+            android:name=".ui.activity.RecordVideoActivity"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".ui.ImageShowActivity"
+            android:name=".ui.activity.ImageShowActivity"
             android:theme="@style/FullscreenTheme" />
     </application>
 

@@ -1,4 +1,4 @@
-package com.yk.mediademo.ui;
+package com.yk.mediademo.ui.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,6 +21,7 @@ import com.yk.media.opengles.view.CameraView;
 import com.yk.media.utils.OpenGLESUtils;
 import com.yk.mediademo.R;
 import com.yk.mediademo.data.adapter.FilterAdapter;
+import com.yk.mediademo.ui.base.IActivityInit;
 import com.yk.mediademo.ui.widget.FilterView;
 
 import java.io.File;

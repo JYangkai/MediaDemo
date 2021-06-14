@@ -1,18 +1,17 @@
-package com.yk.mediademo.ui;
+package com.yk.mediademo.ui.activity;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.yk.media.opengles.render.RenderConstants;
 import com.yk.media.opengles.render.bean.base.BaseRenderBean;
-import com.yk.media.opengles.render.bean.filter.GaussianBlurBean;
 import com.yk.media.opengles.render.manager.RenderManager;
 import com.yk.media.opengles.view.ImageView;
 import com.yk.mediademo.R;
 import com.yk.mediademo.data.adapter.FilterAdapter;
+import com.yk.mediademo.ui.base.IActivityInit;
 import com.yk.mediademo.ui.widget.FilterView;
 
 public class ImageShowActivity extends AppCompatActivity implements IActivityInit {
