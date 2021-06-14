@@ -30,6 +30,7 @@ public class TakePhotoActivity extends AppCompatActivity implements IActivityIni
 
     private CameraView cameraView;
     private FilterView filterView;
+    private AppCompatButton btnSwitch;
     private AppCompatButton btnTakePhoto;
 
     private final PhotoHelper photoHelper = new PhotoHelper();
@@ -50,6 +51,7 @@ public class TakePhotoActivity extends AppCompatActivity implements IActivityIni
     public void findView() {
         cameraView = findViewById(R.id.cameraView);
         filterView = findViewById(R.id.filterView);
+        btnSwitch = findViewById(R.id.btnSwitch);
         btnTakePhoto = findViewById(R.id.btnTakePhoto);
     }
 
@@ -94,6 +96,12 @@ public class TakePhotoActivity extends AppCompatActivity implements IActivityIni
                     }
                 });
                 cameraView.requestRender();
+            }
+        });
+        btnSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cameraView.switchCamera();
             }
         });
     }

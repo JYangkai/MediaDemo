@@ -16,6 +16,15 @@
         android:layout_alignParentBottom="true" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:text="Switch"
+        android:textAllCaps="false" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnTakePhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

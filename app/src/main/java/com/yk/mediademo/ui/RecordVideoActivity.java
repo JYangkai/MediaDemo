@@ -28,6 +28,7 @@ public class RecordVideoActivity extends AppCompatActivity implements IActivityI
 
     private CameraView cameraView;
     private FilterView filterView;
+    private AppCompatButton btnSwitch;
     private AppCompatButton btnRecord;
 
     private final VideoRecorder videoRecorder = new VideoRecorder();
@@ -49,6 +50,7 @@ public class RecordVideoActivity extends AppCompatActivity implements IActivityI
     public void findView() {
         cameraView = findViewById(R.id.cameraView);
         filterView = findViewById(R.id.filterView);
+        btnSwitch = findViewById(R.id.btnSwitch);
         btnRecord = findViewById(R.id.btnRecord);
     }
 
@@ -118,6 +120,12 @@ public class RecordVideoActivity extends AppCompatActivity implements IActivityI
                     }
                 });
                 cameraView.requestRender();
+            }
+        });
+        btnSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cameraView.switchCamera();
             }
         });
     }
