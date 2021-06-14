@@ -117,6 +117,7 @@ public class RecordVideoActivity extends AppCompatActivity implements IActivityI
                     @Override
                     public void run() {
                         RenderManager.getInstance(RecordVideoActivity.this).setFilter(RenderConstants.Process.CAMERA, filter);
+                        RenderManager.getInstance(RecordVideoActivity.this).setFilter(RenderConstants.Process.RECORD_VIDEO, filter);
                     }
                 });
                 cameraView.requestRender();

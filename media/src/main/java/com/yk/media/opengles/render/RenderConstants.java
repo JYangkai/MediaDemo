@@ -19,6 +19,16 @@ public interface RenderConstants {
          * 图像
          */
         int IMAGE = 2;
+
+        /**
+         * 拍照
+         */
+        int TAKE_PHOTO = 3;
+
+        /**
+         * 录像
+         */
+        int RECORD_VIDEO = 4;
     }
 
     /**

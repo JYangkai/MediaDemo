@@ -93,6 +93,7 @@ public class TakePhotoActivity extends AppCompatActivity implements IActivityIni
                     @Override
                     public void run() {
                         RenderManager.getInstance(TakePhotoActivity.this).setFilter(RenderConstants.Process.CAMERA, filter);
+                        RenderManager.getInstance(TakePhotoActivity.this).setFilter(RenderConstants.Process.TAKE_PHOTO, filter);
                     }
                 });
                 cameraView.requestRender();

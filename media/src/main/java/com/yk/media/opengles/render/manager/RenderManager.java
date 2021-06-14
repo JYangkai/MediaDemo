@@ -11,11 +11,15 @@ public class RenderManager {
     private final RenderProcess cameraRenderProcess;
     private final RenderProcess videoRenderProcess;
     private final RenderProcess imageRenderProcess;
+    private final RenderProcess takePhotoRenderProcess;
+    private final RenderProcess recordVideoRenderProcess;
 
     private RenderManager(Context context) {
         cameraRenderProcess = new RenderProcess(context);
         videoRenderProcess = new RenderProcess(context);
         imageRenderProcess = new RenderProcess(context);
+        takePhotoRenderProcess = new RenderProcess(context);
+        recordVideoRenderProcess = new RenderProcess(context);
     }
 
     public static RenderManager getInstance(Context context) {
@@ -64,6 +68,12 @@ public class RenderManager {
                 break;
             case RenderConstants.Process.IMAGE:
                 renderProcess = imageRenderProcess;
+                break;
+            case RenderConstants.Process.TAKE_PHOTO:
+                renderProcess = takePhotoRenderProcess;
+                break;
+            case RenderConstants.Process.RECORD_VIDEO:
+                renderProcess = recordVideoRenderProcess;
                 break;
         }
         return renderProcess;
