@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.yk.mediademo.data.bean.Image;
+import com.yk.mediademo.data.bean.Video;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -30,6 +31,29 @@ public class LocalMediaUtils {
         List<Image> list = new ArrayList<>();
         for (File file1 : files) {
             list.add(new Image(file1.getName(), file1.getAbsolutePath()));
+        }
+        return list;
+    }
+
+    public static List<Video> getVideoList(Context context) {
+        String folder = FolderUtils.getVideoFolderPath(context);
+        if (TextUtils.isEmpty(folder)) {
+            return null;
+        }
+        File file = new File(folder);
+        if (!file.exists()) {
+            return null;
+        }
+        if (!file.isDirectory()) {
+            return null;
+        }
+        File[] files = file.listFiles();
+        if (files == null || files.length <= 0) {
+            return null;
+        }
+        List<Video> list = new ArrayList<>();
+        for (File file1 : files) {
+            list.add(new Video(file1.getName(), file1.getAbsolutePath()));
         }
         return list;
     }
