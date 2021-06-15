@@ -21,7 +21,7 @@ public class PipFilter extends BaseFilter {
         );
 
         gaussianBlurFilter = (GaussianBlurFilter) FilterUtils.getFilter(
-                context, new GaussianBlurBean(300, 20)
+                context, new GaussianBlurBean(2, 5)
         );
     }
 
