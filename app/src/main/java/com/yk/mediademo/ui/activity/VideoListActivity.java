@@ -1,5 +1,6 @@
 package com.yk.mediademo.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -56,7 +57,14 @@ public class VideoListActivity extends AppCompatActivity implements IActivityIni
 
     @Override
     public void bindEvent() {
-
+        videoAdapter.setOnItemClickVideoListener(new VideoAdapter.OnItemClickVideoListener() {
+            @Override
+            public void onItemClickVideo(Video video) {
+                Intent intent = new Intent(VideoListActivity.this, VideoShowActivity.class);
+                intent.putExtra(VideoShowActivity.EXTRA_VIDEO, video);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

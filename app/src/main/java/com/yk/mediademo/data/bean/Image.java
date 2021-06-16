@@ -1,6 +1,8 @@
 package com.yk.mediademo.data.bean;
 
-public class Image {
+import java.io.Serializable;
+
+public class Image implements Serializable {
     private String name;
     private String path;
 

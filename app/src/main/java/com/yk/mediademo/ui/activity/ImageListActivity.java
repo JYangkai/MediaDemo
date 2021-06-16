@@ -1,5 +1,6 @@
 package com.yk.mediademo.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -56,7 +57,14 @@ public class ImageListActivity extends AppCompatActivity implements IActivityIni
 
     @Override
     public void bindEvent() {
-
+        imageAdapter.setOnItemClickImageListener(new ImageAdapter.OnItemClickImageListener() {
+            @Override
+            public void onItemClickImage(Image image) {
+                Intent intent = new Intent(ImageListActivity.this, ImageShowActivity.class);
+                intent.putExtra(ImageShowActivity.EXTRA_IMAGE, image);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

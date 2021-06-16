@@ -32,6 +32,16 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         }
         View view = LayoutInflater.from(context).inflate(R.layout.item_image, parent, false);
         ViewHolder holder = new ViewHolder(view);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                Image image = list.get(position);
+                if (onItemClickImageListener != null) {
+                    onItemClickImageListener.onItemClickImage(image);
+                }
+            }
+        });
         return holder;
     }
 
@@ -54,5 +64,15 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
             super(itemView);
             ivCover = itemView.findViewById(R.id.ivCover);
         }
+    }
+
+    private OnItemClickImageListener onItemClickImageListener;
+
+    public void setOnItemClickImageListener(OnItemClickImageListener onItemClickImageListener) {
+        this.onItemClickImageListener = onItemClickImageListener;
+    }
+
+    public interface OnItemClickImageListener {
+        void onItemClickImage(Image image);
     }
 }

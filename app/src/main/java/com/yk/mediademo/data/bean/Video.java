@@ -1,6 +1,8 @@
 package com.yk.mediademo.data.bean;
 
-public class Video {
+import java.io.Serializable;
+
+public class Video implements Serializable {
     private String name;
     private String path;
 

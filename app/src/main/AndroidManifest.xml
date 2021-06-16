@@ -35,6 +35,9 @@
         <activity
             android:name=".ui.activity.ImageShowActivity"
             android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".ui.activity.VideoShowActivity"
+            android:theme="@style/FullscreenTheme" />
         <activity android:name=".ui.activity.ImageListActivity" />
         <activity android:name=".ui.activity.VideoListActivity" />
     </application>

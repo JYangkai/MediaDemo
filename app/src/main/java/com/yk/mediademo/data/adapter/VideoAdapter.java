@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.yk.mediademo.R;
-import com.yk.mediademo.data.bean.Image;
 import com.yk.mediademo.data.bean.Video;
 
 import java.util.List;
@@ -33,6 +32,16 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
         }
         View view = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
         ViewHolder holder = new ViewHolder(view);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                Video video = list.get(position);
+                if (onItemClickVideoListener != null) {
+                    onItemClickVideoListener.onItemClickVideo(video);
+                }
+            }
+        });
         return holder;
     }
 
@@ -55,5 +64,15 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             super(itemView);
             ivCover = itemView.findViewById(R.id.ivCover);
         }
+    }
+
+    private OnItemClickVideoListener onItemClickVideoListener;
+
+    public void setOnItemClickVideoListener(OnItemClickVideoListener onItemClickVideoListener) {
+        this.onItemClickVideoListener = onItemClickVideoListener;
+    }
+
+    public interface OnItemClickVideoListener {
+        void onItemClickVideo(Video video);
     }
 }
