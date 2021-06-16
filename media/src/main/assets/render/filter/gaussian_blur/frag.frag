@@ -8,21 +8,9 @@ uniform vec2 uBlurRadius;
 // 高斯权重
 uniform float uWeight[BLUR_CORE];
 
-vec2 normalCoordinate(vec2 coordinate) {
-    vec2 normal = coordinate;
-    if (normal.x < 0.0) {
-        normal.x = 0.0;
-    } else if (normal.x > 1.0) {
-        normal.x = 1.0;
-    }
-
-    if (normal.y < 0.0) {
-        normal.y = 0.0;
-    } else if (normal.y > 1.0) {
-        normal.y = 1.0;
-    }
-
-    return normal;
+// 边界值处理
+vec2 clampCoordinate(vec2 coordinate) {
+    return vec2(clamp(coordinate.x, 0.0, 1.0), clamp(coordinate.y, 0.0, 1.0));
 }
 
 void main(){
@@ -31,8 +19,8 @@ void main(){
     vec3 finalColor = sourceColor.rgb * uWeight[0];
 
     for (int i = 1; i < BLUR_CORE; i++) {
-        finalColor += texture2D(uSampler, normalCoordinate(vCoordinate - uBlurRadius * float(i))).rgb * uWeight[i];
-        finalColor += texture2D(uSampler, normalCoordinate(vCoordinate + uBlurRadius * float(i))).rgb * uWeight[i];
+        finalColor += texture2D(uSampler, clampCoordinate(vCoordinate - uBlurRadius * float(i))).rgb * uWeight[i];
+        finalColor += texture2D(uSampler, clampCoordinate(vCoordinate + uBlurRadius * float(i))).rgb * uWeight[i];
     }
 
     gl_FragColor = vec4(finalColor, sourceColor.a);
