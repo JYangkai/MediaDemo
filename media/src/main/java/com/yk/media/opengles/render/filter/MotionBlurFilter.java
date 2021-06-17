@@ -3,12 +3,15 @@ package com.yk.media.opengles.render.filter;
 import android.content.Context;
 import android.opengl.GLES20;
 
+import com.yk.media.opengles.render.bean.base.BaseRenderBean;
+import com.yk.media.opengles.render.bean.filter.MotionBlurBean;
+
 public class MotionBlurFilter extends BaseFilter {
-    private static final int BLUR_CORE = 5;
+    private int uBlurRadiusLocation;
+    private int uSumWeightLocation;
 
-    private int uWeightLocation;
-
-    private final float[] weights = new float[BLUR_CORE];
+    private int blurRadius;
+    private float sumWeight;
 
     public MotionBlurFilter(Context context) {
         super(
@@ -16,33 +19,61 @@ public class MotionBlurFilter extends BaseFilter {
                 "render/filter/motion_blur/vertex.frag",
                 "render/filter/motion_blur/frag.frag"
         );
-        initData();
     }
 
-    private void initData() {
-        // 计算权重
-        float sigma = 3f; // 标准差
-        float sumWeight = 0; // 权重和
-        for (int i = 0; i < BLUR_CORE; i++) {
-            float weight = (float) ((1 / Math.sqrt(2 * Math.PI) * sigma) * Math.pow(Math.E, -Math.pow(i, 2) / (2 * Math.pow(sigma, 2))));
+    @Override
+    public void setRenderBean(BaseRenderBean renderBean) {
+        super.setRenderBean(renderBean);
+        if (!(renderBean instanceof MotionBlurBean)) {
+            return;
+        }
+        MotionBlurBean bean = (MotionBlurBean) renderBean;
+
+        setBlurRadius(bean.getBlurRadius());
+    }
+
+    /**
+     * 计算总权重
+     */
+    private void calculateSumWeight() {
+        if (blurRadius < 1) {
+            setSumWeight(0);
+            return;
+        }
+
+        float sumWeight = 0;
+        float sigma = blurRadius / 3f;
+        for (int i = 0; i < blurRadius; i++) {
+            float weight = (float) ((1 / Math.sqrt(2 * Math.PI * sigma * sigma)) * Math.exp(-(i * i) / (2 * sigma * sigma)));
             sumWeight += weight;
-            weights[i] = weight;
         }
-        // 权重归一化
-        for (int i = 0; i < BLUR_CORE; i++) {
-            weights[i] /= sumWeight;
-        }
+
+        setSumWeight(sumWeight);
     }
 
     @Override
     public void onInitLocation() {
         super.onInitLocation();
-        uWeightLocation = GLES20.glGetUniformLocation(getProgram(), "uWeight");
+        uBlurRadiusLocation = GLES20.glGetUniformLocation(getProgram(), "uBlurRadius");
+        uSumWeightLocation = GLES20.glGetUniformLocation(getProgram(), "uSumWeight");
     }
 
     @Override
     public void onSetOtherData() {
         super.onSetOtherData();
-        GLES20.glUniform1fv(uWeightLocation, weights.length, weights, 0);
+
+        // 计算总权重
+        calculateSumWeight();
+
+        GLES20.glUniform1i(uBlurRadiusLocation, blurRadius);
+        GLES20.glUniform1f(uSumWeightLocation, sumWeight);
+    }
+
+    public void setBlurRadius(int blurRadius) {
+        this.blurRadius = blurRadius;
+    }
+
+    public void setSumWeight(float sumWeight) {
+        this.sumWeight = sumWeight;
     }
 }
