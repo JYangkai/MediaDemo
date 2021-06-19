@@ -40,6 +40,10 @@
             android:theme="@style/FullscreenTheme" />
         <activity android:name=".ui.activity.ImageListActivity" />
         <activity android:name=".ui.activity.VideoListActivity" />
+
+        <activity
+            android:name=".ui.activity.ImageTransitionActivity"
+            android:theme="@style/FullscreenTheme" />
     </application>
 
 </manifest>

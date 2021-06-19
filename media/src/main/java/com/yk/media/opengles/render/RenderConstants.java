@@ -60,4 +60,14 @@ public interface RenderConstants {
          */
         int MOTION_BLUR = 3;
     }
+
+    /**
+     * 转场特效
+     */
+    interface Transition {
+        /**
+         * 普通
+         */
+        int NORMAL = -1;
+    }
 }

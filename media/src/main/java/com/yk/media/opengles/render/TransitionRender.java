@@ -6,39 +6,45 @@ import android.text.TextUtils;
 
 import com.yk.media.opengles.render.base.BaseImageRender;
 import com.yk.media.opengles.render.base.BaseRender;
-import com.yk.media.opengles.render.manager.RenderManager;
+import com.yk.media.opengles.render.transition.TransitionManager;
 import com.yk.media.utils.OpenGLESUtils;
 
-public class ImageRender implements Renderer {
+public class TransitionRender implements Renderer {
     private final Context context;
 
-    private int process;
-
     private final BaseImageRender inputRender;
+    private final BaseImageRender inputRender2;
+
     private final BaseRender outputRender;
 
     private String path;
+    private String path2;
+
     private String fileName;
+    private String fileName2;
 
     private int textureId = -1;
-
-    private boolean isUpdate = false;
+    private int textureId2 = -1;
 
     private int width;
     private int height;
 
-    public ImageRender(Context context, int process) {
+    private boolean isUpdate = false;
+    private boolean isUpdate2 = false;
+
+    public TransitionRender(Context context) {
         this.context = context;
-        this.process = process;
         inputRender = new BaseImageRender(context);
+        inputRender2 = new BaseImageRender(context);
         outputRender = new BaseRender(context);
     }
 
     @Override
     public void onCreate() {
         inputRender.onCreate();
-        RenderManager.getInstance(context).onCreate(process);
+        inputRender2.onCreate();
         outputRender.onCreate();
+        TransitionManager.getInstance(context).onCreate();
     }
 
     @Override
@@ -46,8 +52,9 @@ public class ImageRender implements Renderer {
         this.width = width;
         this.height = height;
         inputRender.onChange(width, height);
-        RenderManager.getInstance(context).onChange(process);
+        inputRender2.onChange(width, height);
         outputRender.onChange(width, height);
+        TransitionManager.getInstance(context).onChange();
     }
 
     @Override
@@ -55,9 +62,14 @@ public class ImageRender implements Renderer {
         if (!initTextureId()) {
             return;
         }
+        if (!initTextureId2()) {
+            return;
+        }
         inputRender.onDraw(textureId);
-        int fboTextureId = inputRender.getFboTextureId();
-        fboTextureId = RenderManager.getInstance(context).onDraw(process, fboTextureId, width, height);
+        inputRender2.onDraw(textureId2);
+        int fboTextureId = TransitionManager.getInstance(context).onDraw(
+                inputRender.getFboTextureId(), inputRender2.getFboTextureId(),
+                width, height);
         outputRender.onDraw(fboTextureId);
     }
 
@@ -80,15 +92,40 @@ public class ImageRender implements Renderer {
         return true;
     }
 
-    public void setPath(String path) {
-        this.path = path;
-        this.fileName = null;
-        isUpdate = true;
+    private boolean initTextureId2() {
+        if (textureId2 != -1 && !isUpdate2) {
+            return true;
+        }
+        Bitmap bitmap = null;
+        if (!TextUtils.isEmpty(path2)) {
+            bitmap = OpenGLESUtils.getBitmapFromPath(path2);
+        } else if (!TextUtils.isEmpty(fileName2)) {
+            bitmap = OpenGLESUtils.getBitmapFromAssets(context, fileName2);
+        }
+        if (bitmap == null) {
+            return false;
+        }
+        inputRender2.setImageSize(bitmap.getWidth(), bitmap.getHeight());
+        textureId2 = OpenGLESUtils.getBitmapTexture(bitmap);
+        isUpdate2 = false;
+        return true;
     }
 
-    public void setAssetsFileName(String fileName) {
-        this.fileName = fileName;
-        this.path = null;
+    public void setPath(String path, String path2) {
+        this.path = path;
+        this.path2 = path2;
+        this.fileName = null;
+        this.fileName2 = null;
         isUpdate = true;
+        isUpdate2 = true;
+    }
+
+    public void setAssetsFileName(String fileName, String fileName2) {
+        this.fileName = fileName;
+        this.fileName2 = fileName2;
+        this.path = null;
+        this.path2 = null;
+        isUpdate = true;
+        isUpdate2 = true;
     }
 }

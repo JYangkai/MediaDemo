@@ -8,5 +8,6 @@ public interface Constants {
         String FUNCTION_IMAGE_SHOW = "图片展示";
         String FUNCTION_IMAGE_LIST = "图片列表";
         String FUNCTION_VIDEO_LIST = "视频列表";
+        String FUNCTION_IMAGE_TRANSITION = "图片转场";
     }
 }

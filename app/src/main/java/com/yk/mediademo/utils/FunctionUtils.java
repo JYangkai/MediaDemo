@@ -7,6 +7,7 @@ import com.yk.mediademo.ui.activity.ImageShowActivity;
 import com.yk.mediademo.ui.activity.RecordVideoActivity;
 import com.yk.mediademo.ui.activity.TakePhotoActivity;
 import com.yk.mediademo.ui.activity.TextureViewCameraActivity;
+import com.yk.mediademo.ui.activity.ImageTransitionActivity;
 import com.yk.mediademo.ui.activity.VideoListActivity;
 
 import java.util.ArrayList;
@@ -22,5 +23,6 @@ public class FunctionUtils {
         FUNCTION_LIST.add(new Function(Constants.Function.FUNCTION_IMAGE_SHOW, ImageShowActivity.class));
         FUNCTION_LIST.add(new Function(Constants.Function.FUNCTION_IMAGE_LIST, ImageListActivity.class));
         FUNCTION_LIST.add(new Function(Constants.Function.FUNCTION_VIDEO_LIST, VideoListActivity.class));
+        FUNCTION_LIST.add(new Function(Constants.Function.FUNCTION_IMAGE_TRANSITION, ImageTransitionActivity.class));
     }
 }
