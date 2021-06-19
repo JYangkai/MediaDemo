@@ -1,4 +1,4 @@
-package com.yk.media.opengles.render.transition;
+package com.yk.media.opengles.render.transition.base;
 
 import android.content.Context;
 import android.opengl.GLES20;
@@ -9,6 +9,8 @@ public class BaseTransition extends BaseRender {
     private int uSampler2Location;
 
     private int textureId2;
+
+    private float progress;
 
     public BaseTransition(Context context) {
         super(
@@ -39,5 +41,13 @@ public class BaseTransition extends BaseRender {
     public void onDrawTransition(int textureId, int textureId2) {
         this.textureId2 = textureId2;
         super.onDraw(textureId);
+    }
+
+    public float getProgress() {
+        return progress;
+    }
+
+    public void setProgress(float progress) {
+        this.progress = progress;
     }
 }

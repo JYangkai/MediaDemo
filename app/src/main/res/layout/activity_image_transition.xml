@@ -9,4 +9,10 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
 
+    <com.yk.mediademo.ui.widget.TransitionListView
+        android:id="@+id/transitionListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
 </RelativeLayout>

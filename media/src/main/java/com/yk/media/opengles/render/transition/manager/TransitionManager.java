@@ -1,8 +1,9 @@
-package com.yk.media.opengles.render.transition;
+package com.yk.media.opengles.render.transition.manager;
 
 import android.content.Context;
 
 import com.yk.media.opengles.render.bean.base.BaseRenderBean;
+import com.yk.media.opengles.render.transition.base.BaseTransition;
 import com.yk.media.utils.TransitionUtils;
 
 public class TransitionManager {
@@ -69,5 +70,12 @@ public class TransitionManager {
             return;
         }
         transition = TransitionUtils.getTransition(context, bean);
+    }
+
+    public void setProgress(float progress) {
+        if (transition == null) {
+            return;
+        }
+        transition.setProgress(progress);
     }
 }

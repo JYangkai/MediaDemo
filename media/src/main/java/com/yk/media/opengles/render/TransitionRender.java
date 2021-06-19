@@ -6,7 +6,7 @@ import android.text.TextUtils;
 
 import com.yk.media.opengles.render.base.BaseImageRender;
 import com.yk.media.opengles.render.base.BaseRender;
-import com.yk.media.opengles.render.transition.TransitionManager;
+import com.yk.media.opengles.render.transition.manager.TransitionManager;
 import com.yk.media.utils.OpenGLESUtils;
 
 public class TransitionRender implements Renderer {

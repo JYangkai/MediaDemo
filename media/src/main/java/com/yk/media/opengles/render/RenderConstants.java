@@ -69,5 +69,10 @@ public interface RenderConstants {
          * 普通
          */
         int NORMAL = -1;
+
+        /**
+         * 混合
+         */
+        int MIX = 0;
     }
 }
