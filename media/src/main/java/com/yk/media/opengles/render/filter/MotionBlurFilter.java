@@ -9,8 +9,10 @@ import com.yk.media.opengles.render.bean.filter.MotionBlurBean;
 public class MotionBlurFilter extends BaseFilter {
     private int uBlurRadiusLocation;
     private int uSumWeightLocation;
+    private int uBlurOffsetLocation;
 
     private int blurRadius;
+    private float blurOffset;
     private float sumWeight;
 
     public MotionBlurFilter(Context context) {
@@ -30,6 +32,7 @@ public class MotionBlurFilter extends BaseFilter {
         MotionBlurBean bean = (MotionBlurBean) renderBean;
 
         setBlurRadius(bean.getBlurRadius());
+        setBlurOffset(bean.getBlurOffset());
     }
 
     /**
@@ -55,6 +58,7 @@ public class MotionBlurFilter extends BaseFilter {
     public void onInitLocation() {
         super.onInitLocation();
         uBlurRadiusLocation = GLES20.glGetUniformLocation(getProgram(), "uBlurRadius");
+        uBlurOffsetLocation = GLES20.glGetUniformLocation(getProgram(), "uBlurOffset");
         uSumWeightLocation = GLES20.glGetUniformLocation(getProgram(), "uSumWeight");
     }
 
@@ -66,11 +70,16 @@ public class MotionBlurFilter extends BaseFilter {
         calculateSumWeight();
 
         GLES20.glUniform1i(uBlurRadiusLocation, blurRadius);
+        GLES20.glUniform1f(uBlurOffsetLocation, blurOffset / getWidth());
         GLES20.glUniform1f(uSumWeightLocation, sumWeight);
     }
 
     public void setBlurRadius(int blurRadius) {
         this.blurRadius = blurRadius;
+    }
+
+    public void setBlurOffset(float blurOffset) {
+        this.blurOffset = blurOffset;
     }
 
     public void setSumWeight(float sumWeight) {

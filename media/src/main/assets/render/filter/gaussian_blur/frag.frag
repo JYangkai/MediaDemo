@@ -17,12 +17,17 @@ vec2 clampCoordinate(vec2 coordinate) {
 
 // 计算权重
 float getWeight(int i) {
-    float sigma = float(uBlurRadius / 3);
+    float sigma = float(uBlurRadius) / 3.0;
     return (1.0 / sqrt(2.0 * PI * sigma * sigma)) * exp(-float(i * i) / (2.0 * sigma * sigma)) / uSumWeight;
 }
 
 void main(){
     vec4 sourceColor = texture2D(uSampler, vCoordinate);
+
+    if (uBlurRadius <= 1) {
+        gl_FragColor = sourceColor;
+        return;
+    }
 
     float weight = getWeight(0);
 

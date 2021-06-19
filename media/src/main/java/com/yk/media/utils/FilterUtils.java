@@ -24,7 +24,7 @@ public class FilterUtils {
         FILTER_LIST.add(new GaussianBlurBean(2, 30, 3, 3));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.GRAY, "灰度滤镜"));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.PIP, "画中画"));
-        FILTER_LIST.add(new MotionBlurBean(30));
+        FILTER_LIST.add(new MotionBlurBean(30,10));
     }
 
     public static BaseFilter getFilter(Context context, BaseRenderBean bean) {

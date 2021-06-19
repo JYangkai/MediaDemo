@@ -3,6 +3,8 @@ uniform sampler2D uSampler;
 varying vec2 vCoordinate;
 // 模糊半径
 uniform int uBlurRadius;
+// 模糊步长
+uniform float uBlurOffset;
 // 总权重
 uniform float uSumWeight;
 // PI
@@ -17,7 +19,7 @@ vec2 clampCoordinate(vec2 coordinate) {
 
 // 计算权重
 float getWeight(int i) {
-    float sigma = float(uBlurRadius / 3);
+    float sigma = float(uBlurRadius) / 3.0;
     return (1.0 / sqrt(2.0 * PI * sigma * sigma)) * exp(-float(i * i) / (2.0 * sigma * sigma)) / uSumWeight;
 }
 
@@ -25,8 +27,13 @@ void main(){
     // 原图
     vec4 sourceColor = texture2D(uSampler, vCoordinate);
 
+    if (uBlurRadius <= 1) {
+        gl_FragColor = sourceColor;
+        return;
+    }
+
     // 模糊方向
-    vec2 direction = (CENTER - vCoordinate) * 0.005;
+    vec2 direction = (CENTER - vCoordinate) * uBlurOffset;
 
     // 最终图像
     vec3 finalColor = sourceColor.rgb * getWeight(0);
