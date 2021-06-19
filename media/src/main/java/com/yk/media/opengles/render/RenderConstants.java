@@ -74,5 +74,10 @@ public interface RenderConstants {
          * 混合
          */
         int MIX = 0;
+
+        /**
+         * 模糊
+         */
+        int BLUR = 1;
     }
 }
