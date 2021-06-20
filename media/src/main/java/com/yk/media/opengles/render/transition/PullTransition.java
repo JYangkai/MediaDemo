@@ -65,7 +65,7 @@ public class PullTransition extends BaseTransition {
     @Override
     public void onSetOtherData() {
         super.onSetOtherData();
-        float progress = getAccelerateDecelerateProgress();
+        float progress = getAccelerateProgress();
 
         float alpha;
         float scaleRatio;
@@ -73,14 +73,14 @@ public class PullTransition extends BaseTransition {
         int blurOffset;
         if (progress < 0.5) {
             alpha = 0;
-            scaleRatio = 1 - progress * 2 * 0.2f;
+            scaleRatio = 1 - progress * 2 * 0.3f;
             blurRadius = (int) (progress * 2 * 30);
-            blurOffset = (int) (progress * 2 * 30);
+            blurOffset = (int) (progress * 2 * 60);
         } else {
             alpha = 1;
-            scaleRatio = 1 + (1 - progress) * 2 * 3f;
+            scaleRatio = 1 + (1 - progress) * 2;
             blurRadius = (int) ((1 - progress) * 2 * 30);
-            blurOffset = (int) ((1 - progress) * 2 * 30);
+            blurOffset = (int) ((1 - progress) * 2 * 60);
         }
 
         GLES20.glUniform1f(uAlphaLocation, alpha);
