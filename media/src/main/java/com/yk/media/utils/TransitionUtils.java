@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.yk.media.opengles.render.RenderConstants;
 import com.yk.media.opengles.render.bean.base.BaseRenderBean;
+import com.yk.media.opengles.render.bean.transition.BaseTransitionBean;
 import com.yk.media.opengles.render.transition.BlurTransition;
 import com.yk.media.opengles.render.transition.MixTransition;
 import com.yk.media.opengles.render.transition.PullTransition;
@@ -17,10 +18,10 @@ public class TransitionUtils {
     public static final List<BaseRenderBean> TRANSITION_LIST = new ArrayList<>();
 
     static {
-        TRANSITION_LIST.add(new BaseRenderBean(RenderConstants.Transition.MIX, "混合"));
-        TRANSITION_LIST.add(new BaseRenderBean(RenderConstants.Transition.BLUR, "模糊"));
-        TRANSITION_LIST.add(new BaseRenderBean(RenderConstants.Transition.PUSH, "推镜"));
-        TRANSITION_LIST.add(new BaseRenderBean(RenderConstants.Transition.PULL, "拉镜"));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.MIX, "混合", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.BLUR, "模糊", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.PUSH, "推镜", 500));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.PULL, "拉镜", 500));
     }
 
     public static BaseTransition getTransition(Context context, BaseRenderBean bean) {

@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 
 import com.yk.media.opengles.render.TransitionRender;
 import com.yk.media.opengles.render.bean.base.BaseRenderBean;
+import com.yk.media.opengles.render.bean.transition.BaseTransitionBean;
 import com.yk.media.opengles.render.transition.manager.TransitionManager;
 import com.yk.media.opengles.view.base.EGLTextureView;
 
@@ -45,6 +46,12 @@ public class TransitionView extends EGLTextureView {
     private Timer timer;
 
     public void start(BaseRenderBean bean) {
+        if (!(bean instanceof BaseTransitionBean)) {
+            return;
+        }
+        BaseTransitionBean transitionBean = (BaseTransitionBean) bean;
+        long duration = transitionBean.getDuration();
+
         stop();
         queueEvent(new Runnable() {
             @Override
@@ -60,14 +67,14 @@ public class TransitionView extends EGLTextureView {
             public void run() {
                 long time = System.currentTimeMillis() - startTime;
 
-                if (time >= DURATION) {
+                if (time >= duration) {
                     stop();
                     return;
                 }
 
-                time = time % DURATION;
+                time = time % duration;
 
-                float progress = (float) time / DURATION;
+                float progress = (float) time / duration;
 
                 TransitionManager.getInstance(getContext()).setProgress(progress);
                 requestRender();
