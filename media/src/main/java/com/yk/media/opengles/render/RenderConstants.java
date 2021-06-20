@@ -41,29 +41,34 @@ public interface RenderConstants {
         int NORMAL = -1;
 
         /**
+         * 均值模糊
+         */
+        int MEAN_BLUR = 0;
+
+        /**
          * 高斯模糊
          */
-        int GAUSSIAN_BLUR = 0;
+        int GAUSSIAN_BLUR = 1;
 
         /**
          * 灰度滤镜
          */
-        int GRAY = 1;
+        int GRAY = 2;
 
         /**
          * 画中画
          */
-        int PIP = 2;
+        int PIP = 3;
 
         /**
          * 运动模糊
          */
-        int MOTION_BLUR = 3;
+        int MOTION_BLUR = 4;
 
         /**
          * 缩放
          */
-        int SCALE = 4;
+        int SCALE = 5;
     }
 
     /**
