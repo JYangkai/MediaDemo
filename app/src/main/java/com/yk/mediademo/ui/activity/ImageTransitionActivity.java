@@ -36,8 +36,8 @@ public class ImageTransitionActivity extends AppCompatActivity implements IActiv
 
     @Override
     public void initData() {
-        fileName = "image/Eason.jpg";
-        fileName2 = "image/Eason2.jpg";
+        fileName = "image/Eason3.jpg";
+        fileName2 = "image/Eason4.jpg";
     }
 
     @Override
