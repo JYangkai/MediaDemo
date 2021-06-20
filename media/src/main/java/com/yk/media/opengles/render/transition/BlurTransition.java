@@ -38,12 +38,15 @@ public class BlurTransition extends BaseTransition {
         float progress = getProgress();
         int scaleRatio = 1;
         int blurRadius;
+        int blurOffset;
         if (progress < 0.5) {
             blurRadius = (int) (progress * 2 * 30);
+            blurOffset = (int) (progress * 2 * 5);
         } else {
             blurRadius = (int) ((1 - progress) * 2 * 30);
+            blurOffset = (int) ((1 - progress) * 2 * 5);
         }
-        GaussianBlurBean gaussianBlurBean = new GaussianBlurBean(scaleRatio, blurRadius);
+        GaussianBlurBean gaussianBlurBean = new GaussianBlurBean(scaleRatio, blurRadius, blurOffset, blurOffset);
         gaussianBlurFilter.updateRenderBean(gaussianBlurBean);
 
         gaussianBlurFilter.onDraw(mixTransition.getFboTextureId());
