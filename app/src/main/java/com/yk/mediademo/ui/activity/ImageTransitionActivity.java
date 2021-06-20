@@ -55,4 +55,10 @@ public class ImageTransitionActivity extends AppCompatActivity implements IActiv
         super.onResume();
         transitionView.setAssetsFileName(fileName, fileName2);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        transitionView.stop();
+    }
 }

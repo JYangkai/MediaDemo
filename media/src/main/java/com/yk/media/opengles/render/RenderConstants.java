@@ -84,5 +84,10 @@ public interface RenderConstants {
          * 模糊
          */
         int BLUR = 1;
+
+        /**
+         * 推镜
+         */
+        int PUSH = 2;
     }
 }

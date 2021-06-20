@@ -47,6 +47,18 @@ public class BaseTransition extends BaseRender {
         return progress;
     }
 
+    public float getAccelerateProgress() {
+        return (float) Math.pow(progress, 2 * 1.5);
+    }
+
+    public float getDecelerateProgress() {
+        return (float) (1 - Math.pow(1 - progress, 2 * 1.5));
+    }
+
+    public float getAccelerateDecelerateProgress() {
+        return (float) (Math.cos((progress + 1) * Math.PI) / 2 + 0.5);
+    }
+
     public void setProgress(float progress) {
         this.progress = progress;
     }

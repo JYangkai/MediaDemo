@@ -12,7 +12,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class TransitionView extends EGLTextureView {
-    private static final long DURATION = 1500;
+    private static final long DURATION = 1000;
 
     private TransitionRender render;
 
