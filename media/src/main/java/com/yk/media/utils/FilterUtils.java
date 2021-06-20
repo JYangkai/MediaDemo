@@ -6,11 +6,13 @@ import com.yk.media.opengles.render.RenderConstants;
 import com.yk.media.opengles.render.bean.base.BaseRenderBean;
 import com.yk.media.opengles.render.bean.filter.GaussianBlurBean;
 import com.yk.media.opengles.render.bean.filter.MotionBlurBean;
+import com.yk.media.opengles.render.bean.filter.ScaleBean;
 import com.yk.media.opengles.render.filter.BaseFilter;
 import com.yk.media.opengles.render.filter.GaussianBlurFilter;
 import com.yk.media.opengles.render.filter.GrayFilter;
 import com.yk.media.opengles.render.filter.MotionBlurFilter;
 import com.yk.media.opengles.render.filter.PipFilter;
+import com.yk.media.opengles.render.filter.ScaleFilter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,9 @@ public class FilterUtils {
         FILTER_LIST.add(new GaussianBlurBean(2, 30, 3, 3));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.GRAY, "灰度滤镜"));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.PIP, "画中画"));
-        FILTER_LIST.add(new MotionBlurBean(30,10));
+        FILTER_LIST.add(new MotionBlurBean(30, 10));
+        FILTER_LIST.add(new ScaleBean("放大", 2));
+        FILTER_LIST.add(new ScaleBean("缩小", 0.5f));
     }
 
     public static BaseFilter getFilter(Context context, BaseRenderBean bean) {
@@ -41,6 +45,9 @@ public class FilterUtils {
                 break;
             case RenderConstants.Filter.MOTION_BLUR:
                 filter = new MotionBlurFilter(context);
+                break;
+            case RenderConstants.Filter.SCALE:
+                filter = new ScaleFilter(context);
                 break;
             default:
                 filter = new BaseFilter(context);

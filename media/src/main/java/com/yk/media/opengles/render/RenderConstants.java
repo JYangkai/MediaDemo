@@ -59,6 +59,11 @@ public interface RenderConstants {
          * 运动模糊
          */
         int MOTION_BLUR = 3;
+
+        /**
+         * 缩放
+         */
+        int SCALE = 4;
     }
 
     /**
