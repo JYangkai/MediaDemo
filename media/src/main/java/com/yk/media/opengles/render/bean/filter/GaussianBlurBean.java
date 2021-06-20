@@ -20,12 +20,12 @@ public class GaussianBlurBean extends BaseRenderBean {
     private int blurOffsetW;
     private int blurOffsetH;
 
-    public GaussianBlurBean(int scaleRatio, int blurRadius) {
-        this(scaleRatio, blurRadius, 1, 1);
+    public GaussianBlurBean(String name, int scaleRatio, int blurRadius) {
+        this(name, scaleRatio, blurRadius, 1, 1);
     }
 
-    public GaussianBlurBean(int scaleRatio, int blurRadius, int blurOffsetW, int blurOffsetH) {
-        super(RenderConstants.Filter.GAUSSIAN_BLUR, "高斯模糊");
+    public GaussianBlurBean(String name, int scaleRatio, int blurRadius, int blurOffsetW, int blurOffsetH) {
+        super(RenderConstants.Filter.GAUSSIAN_BLUR, name);
         this.scaleRatio = scaleRatio;
         this.blurRadius = blurRadius;
         this.blurOffsetW = blurOffsetW;

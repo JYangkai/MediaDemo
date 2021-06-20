@@ -23,7 +23,7 @@ public class PipFilter extends BaseFilter {
         );
 
         gaussianBlurFilter = (GaussianBlurFilter) FilterUtils.getFilter(
-                context, new GaussianBlurBean(2, 30, 3, 3)
+                context, new GaussianBlurBean("毛玻璃", 2, 30, 5, 5)
         );
         scaleFilter = (ScaleFilter) FilterUtils.getFilter(
                 context, new ScaleBean("放大", 2)

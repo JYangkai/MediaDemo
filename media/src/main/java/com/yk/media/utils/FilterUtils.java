@@ -22,8 +22,8 @@ public class FilterUtils {
 
     static {
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.NORMAL, "原画"));
-        FILTER_LIST.add(new GaussianBlurBean(2, 30, 1, 1));
-        FILTER_LIST.add(new GaussianBlurBean(2, 30, 3, 3));
+        FILTER_LIST.add(new GaussianBlurBean("高斯模糊", 2, 30));
+        FILTER_LIST.add(new GaussianBlurBean("毛玻璃", 2, 30, 5, 5));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.GRAY, "灰度滤镜"));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.PIP, "画中画"));
         FILTER_LIST.add(new MotionBlurBean(30, 10));
