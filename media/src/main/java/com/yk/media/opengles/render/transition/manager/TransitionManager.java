@@ -37,6 +37,7 @@ public class TransitionManager {
             return;
         }
         transition.onRelease();
+        transition.releaseTextureId();
         transition = null;
     }
 
@@ -68,6 +69,9 @@ public class TransitionManager {
         if (bean == null) {
             transition = null;
             return;
+        }
+        if (transition != null) {
+            transition.onRelease();
         }
         transition = TransitionUtils.getTransition(context, bean);
     }

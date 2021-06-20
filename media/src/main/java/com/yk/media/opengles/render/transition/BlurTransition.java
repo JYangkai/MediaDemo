@@ -62,4 +62,11 @@ public class BlurTransition extends BaseTransition {
         super.setProgress(progress);
         mixTransition.setProgress(progress);
     }
+
+    @Override
+    public void onRelease() {
+        super.onRelease();
+        mixTransition.onRelease();
+        gaussianBlurFilter.onRelease();
+    }
 }

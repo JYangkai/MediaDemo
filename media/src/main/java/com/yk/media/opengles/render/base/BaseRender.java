@@ -557,12 +557,36 @@ public class BaseRender implements IRender {
         this.coordinateCount = coordinateCount;
     }
 
+    public int getVertexShader() {
+        return vertexShader;
+    }
+
+    public void setVertexShader(int vertexShader) {
+        this.vertexShader = vertexShader;
+    }
+
+    public int getFragShader() {
+        return fragShader;
+    }
+
+    public void setFragShader(int fragShader) {
+        this.fragShader = fragShader;
+    }
+
     public int getProgram() {
         return program;
     }
 
     public void setProgram(int program) {
         this.program = program;
+    }
+
+    public int getTextureId() {
+        return textureId;
+    }
+
+    public void setTextureId(int textureId) {
+        this.textureId = textureId;
     }
 
     public int getFboTextureId() {

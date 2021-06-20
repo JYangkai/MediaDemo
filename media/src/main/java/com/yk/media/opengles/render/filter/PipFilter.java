@@ -65,4 +65,11 @@ public class PipFilter extends BaseFilter {
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, scaleBlurTextureId);
         GLES20.glUniform1i(uSampler2Location, 1);
     }
+
+    @Override
+    public void onRelease() {
+        super.onRelease();
+        scaleFilter.onRelease();
+        gaussianBlurFilter.onRelease();
+    }
 }

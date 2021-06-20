@@ -62,4 +62,19 @@ public class BaseTransition extends BaseRender {
     public void setProgress(float progress) {
         this.progress = progress;
     }
+
+    @Override
+    public void onRelease() {
+        onDeleteProgram(getProgram());
+        onDeleteShader(getVertexShader());
+        onDeleteShader(getFragShader());
+        onDeleteTexture(getFboTextureId());
+        onDeleteFbo(getFboId());
+        onDeleteVbo(getVboId());
+    }
+
+    public void releaseTextureId() {
+        onDeleteTexture(getTextureId());
+        onDeleteTexture(textureId2);
+    }
 }

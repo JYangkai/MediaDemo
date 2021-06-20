@@ -91,4 +91,11 @@ public class PushTransition extends BaseTransition {
         MotionBlurBean motionBlurBean = new MotionBlurBean(blurRadius, blurOffset);
         motionBlurFilter.updateRenderBean(motionBlurBean);
     }
+
+    @Override
+    public void onRelease() {
+        super.onRelease();
+        scaleFilter.onRelease();
+        motionBlurFilter.onRelease();
+    }
 }

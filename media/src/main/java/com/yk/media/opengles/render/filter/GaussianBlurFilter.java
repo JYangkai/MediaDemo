@@ -165,4 +165,12 @@ public class GaussianBlurFilter extends BaseFilter {
             this.sumWeight = sumWeight;
         }
     }
+
+    @Override
+    public void onRelease() {
+        super.onRelease();
+        horizontal.onRelease();
+        vertical.onRelease();
+        output.onRelease();
+    }
 }
