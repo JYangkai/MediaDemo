@@ -89,5 +89,10 @@ public interface RenderConstants {
          * 推镜
          */
         int PUSH = 2;
+
+        /**
+         * 拉镜
+         */
+        int PULL = 3;
     }
 }

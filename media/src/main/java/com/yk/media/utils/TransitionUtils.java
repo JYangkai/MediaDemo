@@ -6,6 +6,7 @@ import com.yk.media.opengles.render.RenderConstants;
 import com.yk.media.opengles.render.bean.base.BaseRenderBean;
 import com.yk.media.opengles.render.transition.BlurTransition;
 import com.yk.media.opengles.render.transition.MixTransition;
+import com.yk.media.opengles.render.transition.PullTransition;
 import com.yk.media.opengles.render.transition.PushTransition;
 import com.yk.media.opengles.render.transition.base.BaseTransition;
 
@@ -19,6 +20,7 @@ public class TransitionUtils {
         TRANSITION_LIST.add(new BaseRenderBean(RenderConstants.Transition.MIX, "混合"));
         TRANSITION_LIST.add(new BaseRenderBean(RenderConstants.Transition.BLUR, "模糊"));
         TRANSITION_LIST.add(new BaseRenderBean(RenderConstants.Transition.PUSH, "推镜"));
+        TRANSITION_LIST.add(new BaseRenderBean(RenderConstants.Transition.PULL, "拉镜"));
     }
 
     public static BaseTransition getTransition(Context context, BaseRenderBean bean) {
@@ -32,6 +34,9 @@ public class TransitionUtils {
                 break;
             case RenderConstants.Transition.PUSH:
                 transition = new PushTransition(context);
+                break;
+            case RenderConstants.Transition.PULL:
+                transition = new PullTransition(context);
                 break;
             default:
                 transition = new BaseTransition(context);

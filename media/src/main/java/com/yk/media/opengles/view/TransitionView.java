@@ -59,6 +59,12 @@ public class TransitionView extends EGLTextureView {
             @Override
             public void run() {
                 long time = System.currentTimeMillis() - startTime;
+
+                if (time >= DURATION) {
+                    stop();
+                    return;
+                }
+
                 time = time % DURATION;
 
                 float progress = (float) time / DURATION;

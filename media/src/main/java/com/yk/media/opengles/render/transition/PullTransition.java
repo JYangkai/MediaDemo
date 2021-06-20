@@ -10,17 +10,17 @@ import com.yk.media.opengles.render.filter.ScaleFilter;
 import com.yk.media.opengles.render.transition.base.BaseTransition;
 import com.yk.media.utils.FilterUtils;
 
-public class PushTransition extends BaseTransition {
+public class PullTransition extends BaseTransition {
     private int uAlphaLocation;
 
     private ScaleFilter scaleFilter;
     private MotionBlurFilter motionBlurFilter;
 
-    public PushTransition(Context context) {
+    public PullTransition(Context context) {
         super(
                 context,
-                "render/transition/push/vertex.frag",
-                "render/transition/push/frag.frag"
+                "render/transition/pull/vertex.frag",
+                "render/transition/pull/frag.frag"
         );
         scaleFilter = (ScaleFilter) FilterUtils.getFilter(
                 context, new ScaleBean("缩放", 1)
@@ -73,12 +73,12 @@ public class PushTransition extends BaseTransition {
         int blurOffset;
         if (progress < 0.5) {
             alpha = 0;
-            scaleRatio = 1 + progress * 2 * 3;
+            scaleRatio = 1 - progress * 2 * 0.2f;
             blurRadius = (int) (progress * 2 * 30);
             blurOffset = (int) (progress * 2 * 30);
         } else {
             alpha = 1;
-            scaleRatio = 1 - (1 - progress) * 2 * 0.2f;
+            scaleRatio = 1 + (1 - progress) * 2 * 3f;
             blurRadius = (int) ((1 - progress) * 2 * 30);
             blurOffset = (int) ((1 - progress) * 2 * 30);
         }
