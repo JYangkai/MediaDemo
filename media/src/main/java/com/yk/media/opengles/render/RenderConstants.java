@@ -69,6 +69,11 @@ public interface RenderConstants {
          * 缩放
          */
         int SCALE = 5;
+
+        /**
+         * 扭曲
+         */
+        int SKEW = 6;
     }
 
     /**

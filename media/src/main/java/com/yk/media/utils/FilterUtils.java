@@ -15,6 +15,7 @@ import com.yk.media.opengles.render.filter.MeanBlurFilter;
 import com.yk.media.opengles.render.filter.MotionBlurFilter;
 import com.yk.media.opengles.render.filter.PipFilter;
 import com.yk.media.opengles.render.filter.ScaleFilter;
+import com.yk.media.opengles.render.filter.SkewFilter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class FilterUtils {
 
     static {
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.NORMAL, "原画"));
-        FILTER_LIST.add(new MeanBlurBean("均值模糊", 2, 30,1,1));
+        FILTER_LIST.add(new MeanBlurBean("均值模糊", 2, 30, 1, 1));
         FILTER_LIST.add(new GaussianBlurBean("高斯模糊", 2, 30));
         FILTER_LIST.add(new GaussianBlurBean("毛玻璃", 2, 30, 5, 5));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.GRAY, "灰度滤镜"));
@@ -32,6 +33,7 @@ public class FilterUtils {
         FILTER_LIST.add(new MotionBlurBean(30, 10));
         FILTER_LIST.add(new ScaleBean("放大", 2));
         FILTER_LIST.add(new ScaleBean("缩小", 0.5f));
+        FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.SKEW, "扭曲"));
     }
 
     public static BaseFilter getFilter(Context context, BaseRenderBean bean) {
@@ -54,6 +56,9 @@ public class FilterUtils {
                 break;
             case RenderConstants.Filter.SCALE:
                 filter = new ScaleFilter(context);
+                break;
+            case RenderConstants.Filter.SKEW:
+                filter = new SkewFilter(context);
                 break;
             default:
                 filter = new BaseFilter(context);
