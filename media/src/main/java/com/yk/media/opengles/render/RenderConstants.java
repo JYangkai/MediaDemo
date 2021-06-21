@@ -104,5 +104,10 @@ public interface RenderConstants {
          * 拉镜
          */
         int PULL = 3;
+
+        /**
+         * 旋涡
+         */
+        int VORTEX = 4;
     }
 }
