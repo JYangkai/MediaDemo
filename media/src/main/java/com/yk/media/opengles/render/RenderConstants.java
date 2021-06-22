@@ -109,5 +109,10 @@ public interface RenderConstants {
          * 旋涡
          */
         int VORTEX = 4;
+
+        /**
+         * 左移
+         */
+        int LEFT_MOVE = 5;
     }
 }

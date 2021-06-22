@@ -68,6 +68,8 @@ public class TransitionView extends EGLTextureView {
                 long time = System.currentTimeMillis() - startTime;
 
                 if (time >= duration) {
+                    TransitionManager.getInstance(getContext()).setProgress(1);
+                    requestRender();
                     stop();
                     return;
                 }

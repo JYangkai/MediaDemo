@@ -6,6 +6,7 @@ import com.yk.media.opengles.render.RenderConstants;
 import com.yk.media.opengles.render.bean.base.BaseRenderBean;
 import com.yk.media.opengles.render.bean.transition.BaseTransitionBean;
 import com.yk.media.opengles.render.transition.BlurTransition;
+import com.yk.media.opengles.render.transition.LeftMoveTransition;
 import com.yk.media.opengles.render.transition.MixTransition;
 import com.yk.media.opengles.render.transition.PullTransition;
 import com.yk.media.opengles.render.transition.PushTransition;
@@ -24,6 +25,7 @@ public class TransitionUtils {
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.PUSH, "推镜", 500));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.PULL, "拉镜", 500));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.VORTEX, "旋涡", 10000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.LEFT_MOVE, "左移", 1000));
     }
 
     public static BaseTransition getTransition(Context context, BaseRenderBean bean) {
@@ -43,6 +45,9 @@ public class TransitionUtils {
                 break;
             case RenderConstants.Transition.VORTEX:
                 transition = new VortexTransition(context);
+                break;
+            case RenderConstants.Transition.LEFT_MOVE:
+                transition = new LeftMoveTransition(context);
                 break;
             default:
                 transition = new BaseTransition(context);
