@@ -129,5 +129,10 @@ public interface RenderConstants {
          * 下移
          */
         int DOWN_MOVE = 8;
+
+        /**
+         * 翻页
+         */
+        int PAGE_UP = 9;
     }
 }

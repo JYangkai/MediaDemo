@@ -9,6 +9,7 @@ import com.yk.media.opengles.render.transition.BlurTransition;
 import com.yk.media.opengles.render.transition.DownMoveTransition;
 import com.yk.media.opengles.render.transition.LeftMoveTransition;
 import com.yk.media.opengles.render.transition.MixTransition;
+import com.yk.media.opengles.render.transition.PageUpTransition;
 import com.yk.media.opengles.render.transition.PullTransition;
 import com.yk.media.opengles.render.transition.PushTransition;
 import com.yk.media.opengles.render.transition.RightMoveTransition;
@@ -32,6 +33,7 @@ public class TransitionUtils {
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.RIGHT_MOVE, "右移", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.TOP_MOVE, "上移", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.DOWN_MOVE, "下移", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.PAGE_UP, "翻页", 1000));
     }
 
     public static BaseTransition getTransition(Context context, BaseRenderBean bean) {
@@ -63,6 +65,9 @@ public class TransitionUtils {
                 break;
             case RenderConstants.Transition.DOWN_MOVE:
                 transition = new DownMoveTransition(context);
+                break;
+            case RenderConstants.Transition.PAGE_UP:
+                transition = new PageUpTransition(context);
                 break;
             default:
                 transition = new BaseTransition(context);
