@@ -124,5 +124,10 @@ public interface RenderConstants {
          * 上移
          */
         int TOP_MOVE = 7;
+
+        /**
+         * 下移
+         */
+        int DOWN_MOVE = 8;
     }
 }

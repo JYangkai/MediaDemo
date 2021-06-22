@@ -6,6 +6,7 @@ import com.yk.media.opengles.render.RenderConstants;
 import com.yk.media.opengles.render.bean.base.BaseRenderBean;
 import com.yk.media.opengles.render.bean.transition.BaseTransitionBean;
 import com.yk.media.opengles.render.transition.BlurTransition;
+import com.yk.media.opengles.render.transition.DownMoveTransition;
 import com.yk.media.opengles.render.transition.LeftMoveTransition;
 import com.yk.media.opengles.render.transition.MixTransition;
 import com.yk.media.opengles.render.transition.PullTransition;
@@ -30,6 +31,7 @@ public class TransitionUtils {
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.LEFT_MOVE, "左移", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.RIGHT_MOVE, "右移", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.TOP_MOVE, "上移", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.DOWN_MOVE, "下移", 1000));
     }
 
     public static BaseTransition getTransition(Context context, BaseRenderBean bean) {
@@ -58,6 +60,9 @@ public class TransitionUtils {
                 break;
             case RenderConstants.Transition.TOP_MOVE:
                 transition = new TopMoveTransition(context);
+                break;
+            case RenderConstants.Transition.DOWN_MOVE:
+                transition = new DownMoveTransition(context);
                 break;
             default:
                 transition = new BaseTransition(context);
