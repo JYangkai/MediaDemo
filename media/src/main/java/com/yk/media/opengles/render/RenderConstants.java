@@ -74,6 +74,16 @@ public interface RenderConstants {
          * 扭曲
          */
         int SKEW = 6;
+
+        /**
+         * 蓝线挑战（横向）
+         */
+        int BLUE_LINE_CHALLENGE_H = 7;
+
+        /**
+         * 蓝线挑战（纵向）
+         */
+        int BLUE_LINE_CHALLENGE_V = 8;
     }
 
     /**

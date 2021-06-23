@@ -9,6 +9,8 @@ import com.yk.media.opengles.render.bean.filter.MeanBlurBean;
 import com.yk.media.opengles.render.bean.filter.MotionBlurBean;
 import com.yk.media.opengles.render.bean.filter.ScaleBean;
 import com.yk.media.opengles.render.filter.BaseFilter;
+import com.yk.media.opengles.render.filter.BlueLineChallengeHFilter;
+import com.yk.media.opengles.render.filter.BlueLineChallengeVFilter;
 import com.yk.media.opengles.render.filter.GaussianBlurFilter;
 import com.yk.media.opengles.render.filter.GrayFilter;
 import com.yk.media.opengles.render.filter.MeanBlurFilter;
@@ -34,6 +36,8 @@ public class FilterUtils {
         FILTER_LIST.add(new ScaleBean("放大", 2));
         FILTER_LIST.add(new ScaleBean("缩小", 0.5f));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.SKEW, "扭曲"));
+        FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.BLUE_LINE_CHALLENGE_H, "蓝线挑战（横向）"));
+        FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.BLUE_LINE_CHALLENGE_V, "蓝线挑战（纵向）"));
     }
 
     public static BaseFilter getFilter(Context context, BaseRenderBean bean) {
@@ -59,6 +63,12 @@ public class FilterUtils {
                 break;
             case RenderConstants.Filter.SKEW:
                 filter = new SkewFilter(context);
+                break;
+            case RenderConstants.Filter.BLUE_LINE_CHALLENGE_H:
+                filter = new BlueLineChallengeHFilter(context);
+                break;
+            case RenderConstants.Filter.BLUE_LINE_CHALLENGE_V:
+                filter = new BlueLineChallengeVFilter(context);
                 break;
             default:
                 filter = new BaseFilter(context);
