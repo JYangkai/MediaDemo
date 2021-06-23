@@ -141,8 +141,28 @@ public interface RenderConstants {
         int DOWN_MOVE = 8;
 
         /**
+         * 左上移
+         */
+        int LEFT_TOP_MOVE = 9;
+
+        /**
+         * 右上移
+         */
+        int RIGHT_TOP_MOVE = 10;
+
+        /**
+         * 左下移
+         */
+        int LEFT_DOWN_MOVE = 11;
+
+        /**
+         * 右下移
+         */
+        int RIGHT_DOWN_MOVE = 12;
+
+        /**
          * 翻页
          */
-        int PAGE_UP = 9;
+        int PAGE_UP = 13;
     }
 }

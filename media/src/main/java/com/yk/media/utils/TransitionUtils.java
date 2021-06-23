@@ -7,12 +7,16 @@ import com.yk.media.opengles.render.bean.base.BaseRenderBean;
 import com.yk.media.opengles.render.bean.transition.BaseTransitionBean;
 import com.yk.media.opengles.render.transition.BlurTransition;
 import com.yk.media.opengles.render.transition.DownMoveTransition;
+import com.yk.media.opengles.render.transition.LeftDownMoveTransition;
 import com.yk.media.opengles.render.transition.LeftMoveTransition;
+import com.yk.media.opengles.render.transition.LeftTopMoveTransition;
 import com.yk.media.opengles.render.transition.MixTransition;
 import com.yk.media.opengles.render.transition.PageUpTransition;
 import com.yk.media.opengles.render.transition.PullTransition;
 import com.yk.media.opengles.render.transition.PushTransition;
+import com.yk.media.opengles.render.transition.RightDownMoveTransition;
 import com.yk.media.opengles.render.transition.RightMoveTransition;
+import com.yk.media.opengles.render.transition.RightTopMoveTransition;
 import com.yk.media.opengles.render.transition.TopMoveTransition;
 import com.yk.media.opengles.render.transition.VortexTransition;
 import com.yk.media.opengles.render.transition.base.BaseTransition;
@@ -33,6 +37,10 @@ public class TransitionUtils {
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.RIGHT_MOVE, "右移", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.TOP_MOVE, "上移", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.DOWN_MOVE, "下移", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.LEFT_TOP_MOVE, "左上移", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.RIGHT_TOP_MOVE, "右上移", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.LEFT_DOWN_MOVE, "左下移", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.RIGHT_DOWN_MOVE, "右下移", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.PAGE_UP, "翻页", 1000));
     }
 
@@ -65,6 +73,18 @@ public class TransitionUtils {
                 break;
             case RenderConstants.Transition.DOWN_MOVE:
                 transition = new DownMoveTransition(context);
+                break;
+            case RenderConstants.Transition.LEFT_TOP_MOVE:
+                transition = new LeftTopMoveTransition(context);
+                break;
+            case RenderConstants.Transition.RIGHT_TOP_MOVE:
+                transition = new RightTopMoveTransition(context);
+                break;
+            case RenderConstants.Transition.LEFT_DOWN_MOVE:
+                transition = new LeftDownMoveTransition(context);
+                break;
+            case RenderConstants.Transition.RIGHT_DOWN_MOVE:
+                transition = new RightDownMoveTransition(context);
                 break;
             case RenderConstants.Transition.PAGE_UP:
                 transition = new PageUpTransition(context);
