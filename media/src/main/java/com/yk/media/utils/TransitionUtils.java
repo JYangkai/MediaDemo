@@ -6,6 +6,10 @@ import com.yk.media.opengles.render.RenderConstants;
 import com.yk.media.opengles.render.bean.base.BaseRenderBean;
 import com.yk.media.opengles.render.bean.transition.BaseTransitionBean;
 import com.yk.media.opengles.render.transition.BlurTransition;
+import com.yk.media.opengles.render.transition.Cut1Transition;
+import com.yk.media.opengles.render.transition.Cut2Transition;
+import com.yk.media.opengles.render.transition.Cut3Transition;
+import com.yk.media.opengles.render.transition.Cut4Transition;
 import com.yk.media.opengles.render.transition.DownMoveTransition;
 import com.yk.media.opengles.render.transition.LeftDownMoveTransition;
 import com.yk.media.opengles.render.transition.LeftMoveTransition;
@@ -42,6 +46,10 @@ public class TransitionUtils {
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.LEFT_DOWN_MOVE, "左下移", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.RIGHT_DOWN_MOVE, "右下移", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.PAGE_UP, "翻页", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.CUT_1, "分割一", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.CUT_2, "分割二", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.CUT_3, "分割三", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.CUT_4, "分割四", 1000));
     }
 
     public static BaseTransition getTransition(Context context, BaseRenderBean bean) {
@@ -88,6 +96,18 @@ public class TransitionUtils {
                 break;
             case RenderConstants.Transition.PAGE_UP:
                 transition = new PageUpTransition(context);
+                break;
+            case RenderConstants.Transition.CUT_1:
+                transition = new Cut1Transition(context);
+                break;
+            case RenderConstants.Transition.CUT_2:
+                transition = new Cut2Transition(context);
+                break;
+            case RenderConstants.Transition.CUT_3:
+                transition = new Cut3Transition(context);
+                break;
+            case RenderConstants.Transition.CUT_4:
+                transition = new Cut4Transition(context);
                 break;
             default:
                 transition = new BaseTransition(context);

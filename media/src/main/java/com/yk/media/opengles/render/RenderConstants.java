@@ -164,5 +164,25 @@ public interface RenderConstants {
          * 翻页
          */
         int PAGE_UP = 13;
+
+        /**
+         * 分割一
+         */
+        int CUT_1 = 14;
+
+        /**
+         * 分割二
+         */
+        int CUT_2 = 15;
+
+        /**
+         * 分割三
+         */
+        int CUT_3 = 16;
+
+        /**
+         * 分割四
+         */
+        int CUT_4 = 17;
     }
 }
