@@ -84,6 +84,11 @@ public interface RenderConstants {
          * 蓝线挑战（纵向）
          */
         int BLUE_LINE_CHALLENGE_V = 8;
+
+        /**
+         * 保留帧
+         */
+        int RETAIN_FRAME = 9;
     }
 
     /**
