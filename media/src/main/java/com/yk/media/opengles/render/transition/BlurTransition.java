@@ -36,7 +36,7 @@ public class BlurTransition extends BaseTransition {
         mixTransition.onDrawTransition(textureId, textureId2);
 
         float progress = getProgress();
-        int scaleRatio = 1;
+        int scaleRatio = 4;
         int blurRadius;
         int blurOffset;
         if (progress < 0.5) {
