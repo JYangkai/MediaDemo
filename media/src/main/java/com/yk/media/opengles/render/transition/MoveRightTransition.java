@@ -6,17 +6,17 @@ import android.util.Log;
 
 import com.yk.media.opengles.render.transition.base.BaseTransition;
 
-public class RightMoveTransition extends BaseTransition {
+public class MoveRightTransition extends BaseTransition {
     private static final String TAG = "LeftMoveTransition";
 
     private int uOffsetLocation;
     private int uUseSamplerLocation;
 
-    public RightMoveTransition(Context context) {
+    public MoveRightTransition(Context context) {
         super(
                 context,
-                "render/transition/right_move/vertex.frag",
-                "render/transition/right_move/frag.frag"
+                "render/transition/move_right/vertex.frag",
+                "render/transition/move_right/frag.frag"
         );
     }
 

@@ -10,18 +10,18 @@ import com.yk.media.opengles.render.transition.Cut1Transition;
 import com.yk.media.opengles.render.transition.Cut2Transition;
 import com.yk.media.opengles.render.transition.Cut3Transition;
 import com.yk.media.opengles.render.transition.Cut4Transition;
-import com.yk.media.opengles.render.transition.DownMoveTransition;
-import com.yk.media.opengles.render.transition.LeftDownMoveTransition;
-import com.yk.media.opengles.render.transition.LeftMoveTransition;
-import com.yk.media.opengles.render.transition.LeftTopMoveTransition;
+import com.yk.media.opengles.render.transition.MoveDownTransition;
+import com.yk.media.opengles.render.transition.MoveLeftDownTransition;
+import com.yk.media.opengles.render.transition.MoveLeftTransition;
+import com.yk.media.opengles.render.transition.MoveTopMoveTransition;
 import com.yk.media.opengles.render.transition.MixTransition;
 import com.yk.media.opengles.render.transition.PageUpTransition;
 import com.yk.media.opengles.render.transition.PullTransition;
 import com.yk.media.opengles.render.transition.PushTransition;
-import com.yk.media.opengles.render.transition.RightDownMoveTransition;
-import com.yk.media.opengles.render.transition.RightMoveTransition;
-import com.yk.media.opengles.render.transition.RightTopMoveTransition;
-import com.yk.media.opengles.render.transition.TopMoveTransition;
+import com.yk.media.opengles.render.transition.MoveRightDownTransition;
+import com.yk.media.opengles.render.transition.MoveRightTransition;
+import com.yk.media.opengles.render.transition.MoveRightTopTransition;
+import com.yk.media.opengles.render.transition.MoveTopTransition;
 import com.yk.media.opengles.render.transition.VortexTransition;
 import com.yk.media.opengles.render.transition.base.BaseTransition;
 
@@ -71,28 +71,28 @@ public class TransitionUtils {
                 transition = new VortexTransition(context);
                 break;
             case RenderConstants.Transition.LEFT_MOVE:
-                transition = new LeftMoveTransition(context);
+                transition = new MoveLeftTransition(context);
                 break;
             case RenderConstants.Transition.RIGHT_MOVE:
-                transition = new RightMoveTransition(context);
+                transition = new MoveRightTransition(context);
                 break;
             case RenderConstants.Transition.TOP_MOVE:
-                transition = new TopMoveTransition(context);
+                transition = new MoveTopTransition(context);
                 break;
             case RenderConstants.Transition.DOWN_MOVE:
-                transition = new DownMoveTransition(context);
+                transition = new MoveDownTransition(context);
                 break;
             case RenderConstants.Transition.LEFT_TOP_MOVE:
-                transition = new LeftTopMoveTransition(context);
+                transition = new MoveTopMoveTransition(context);
                 break;
             case RenderConstants.Transition.RIGHT_TOP_MOVE:
-                transition = new RightTopMoveTransition(context);
+                transition = new MoveRightTopTransition(context);
                 break;
             case RenderConstants.Transition.LEFT_DOWN_MOVE:
-                transition = new LeftDownMoveTransition(context);
+                transition = new MoveLeftDownTransition(context);
                 break;
             case RenderConstants.Transition.RIGHT_DOWN_MOVE:
-                transition = new RightDownMoveTransition(context);
+                transition = new MoveRightDownTransition(context);
                 break;
             case RenderConstants.Transition.PAGE_UP:
                 transition = new PageUpTransition(context);
