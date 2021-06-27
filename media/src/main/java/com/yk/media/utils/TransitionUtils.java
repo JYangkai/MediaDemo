@@ -10,18 +10,20 @@ import com.yk.media.opengles.render.transition.Cut1Transition;
 import com.yk.media.opengles.render.transition.Cut2Transition;
 import com.yk.media.opengles.render.transition.Cut3Transition;
 import com.yk.media.opengles.render.transition.Cut4Transition;
+import com.yk.media.opengles.render.transition.FlipHorizontalTransition;
+import com.yk.media.opengles.render.transition.FlipVerticalTransition;
+import com.yk.media.opengles.render.transition.MixTransition;
 import com.yk.media.opengles.render.transition.MoveDownTransition;
 import com.yk.media.opengles.render.transition.MoveLeftDownTransition;
 import com.yk.media.opengles.render.transition.MoveLeftTransition;
+import com.yk.media.opengles.render.transition.MoveRightDownTransition;
+import com.yk.media.opengles.render.transition.MoveRightTopTransition;
+import com.yk.media.opengles.render.transition.MoveRightTransition;
 import com.yk.media.opengles.render.transition.MoveTopMoveTransition;
-import com.yk.media.opengles.render.transition.MixTransition;
+import com.yk.media.opengles.render.transition.MoveTopTransition;
 import com.yk.media.opengles.render.transition.PageUpTransition;
 import com.yk.media.opengles.render.transition.PullTransition;
 import com.yk.media.opengles.render.transition.PushTransition;
-import com.yk.media.opengles.render.transition.MoveRightDownTransition;
-import com.yk.media.opengles.render.transition.MoveRightTransition;
-import com.yk.media.opengles.render.transition.MoveRightTopTransition;
-import com.yk.media.opengles.render.transition.MoveTopTransition;
 import com.yk.media.opengles.render.transition.VortexTransition;
 import com.yk.media.opengles.render.transition.base.BaseTransition;
 
@@ -50,6 +52,8 @@ public class TransitionUtils {
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.CUT_2, "分割二", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.CUT_3, "分割三", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.CUT_4, "分割四", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.FLIP_HORIZONTAL, "水平翻转", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition.FLIP_VERTICAL, "垂直翻转", 1000));
     }
 
     public static BaseTransition getTransition(Context context, BaseRenderBean bean) {
@@ -108,6 +112,12 @@ public class TransitionUtils {
                 break;
             case RenderConstants.Transition.CUT_4:
                 transition = new Cut4Transition(context);
+                break;
+            case RenderConstants.Transition.FLIP_HORIZONTAL:
+                transition = new FlipHorizontalTransition(context);
+                break;
+            case RenderConstants.Transition.FLIP_VERTICAL:
+                transition = new FlipVerticalTransition(context);
                 break;
             default:
                 transition = new BaseTransition(context);

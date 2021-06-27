@@ -189,5 +189,15 @@ public interface RenderConstants {
          * 分割四
          */
         int CUT_4 = 17;
+
+        /**
+         * 水平翻转
+         */
+        int FLIP_HORIZONTAL = 18;
+
+        /**
+         * 垂直翻转
+         */
+        int FLIP_VERTICAL = 19;
     }
 }
