@@ -200,4 +200,14 @@ public interface RenderConstants {
          */
         int FLIP_VERTICAL = 19;
     }
+
+    /**
+     * 转场特效2
+     */
+    interface Transition2 {
+        /**
+         * 普通
+         */
+        int NORMAL = -1;
+    }
 }

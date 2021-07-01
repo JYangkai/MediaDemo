@@ -44,6 +44,9 @@
         <activity
             android:name=".ui.activity.ImageTransitionActivity"
             android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".ui.activity.ImageTransition2Activity"
+            android:theme="@style/FullscreenTheme" />
     </application>
 
 </manifest>
