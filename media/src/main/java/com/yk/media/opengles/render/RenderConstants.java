@@ -209,5 +209,45 @@ public interface RenderConstants {
          * 普通
          */
         int NORMAL = -1;
+
+        /**
+         * 移动向上
+         */
+        int MOVE_UP = 0;
+
+        /**
+         * 移动向下
+         */
+        int MOVE_DOWN = 1;
+
+        /**
+         * 移动向左
+         */
+        int MOVE_LEFT = 2;
+
+        /**
+         * 移动向右
+         */
+        int MOVE_RIGHT = 3;
+
+        /**
+         * 移动向左上
+         */
+        int MOVE_LEFT_UP = 4;
+
+        /**
+         * 移动向右上
+         */
+        int MOVE_RIGHT_UP = 5;
+
+        /**
+         * 移动向左下
+         */
+        int MOVE_LEFT_DOWN = 6;
+
+        /**
+         * 移动向右下
+         */
+        int MOVE_RIGHT_DOWN = 7;
     }
 }
