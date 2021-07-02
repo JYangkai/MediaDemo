@@ -274,5 +274,10 @@ public interface RenderConstants {
          * 抹掉中心
          */
         int WIPE_CENTER = 12;
+
+        /**
+         * 抹掉圆形
+         */
+        int WIPE_CIRCLE = 13;
     }
 }
