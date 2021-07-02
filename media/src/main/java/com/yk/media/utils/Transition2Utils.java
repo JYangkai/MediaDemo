@@ -13,6 +13,10 @@ import com.yk.media.opengles.render.transition2.MoveRightDownTransition;
 import com.yk.media.opengles.render.transition2.MoveRightTransition;
 import com.yk.media.opengles.render.transition2.MoveRightUpTransition;
 import com.yk.media.opengles.render.transition2.MoveUpTransition;
+import com.yk.media.opengles.render.transition2.WipeDownTransition;
+import com.yk.media.opengles.render.transition2.WipeLeftTransition;
+import com.yk.media.opengles.render.transition2.WipeRightTransition;
+import com.yk.media.opengles.render.transition2.WipeUpTransition;
 import com.yk.media.opengles.render.transition2.base.BaseTransition;
 
 import java.util.ArrayList;
@@ -31,6 +35,10 @@ public class Transition2Utils {
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.MOVE_RIGHT_UP, "移动向右上", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.MOVE_LEFT_DOWN, "移动向左下", 1000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.MOVE_RIGHT_DOWN, "移动向右下", 1000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_LEFT, "抹掉向左", 5000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_RIGHT, "抹掉向右", 5000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_UP, "抹掉向上", 5000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_DOWN, "抹掉向下", 5000));
     }
 
     public static BaseTransition getTransition(Context context, BaseRenderBean bean) {
@@ -59,6 +67,18 @@ public class Transition2Utils {
                 break;
             case RenderConstants.Transition2.MOVE_RIGHT_DOWN:
                 transition = new MoveRightDownTransition(context);
+                break;
+            case RenderConstants.Transition2.WIPE_LEFT:
+                transition = new WipeLeftTransition(context);
+                break;
+            case RenderConstants.Transition2.WIPE_RIGHT:
+                transition = new WipeRightTransition(context);
+                break;
+            case RenderConstants.Transition2.WIPE_UP:
+                transition = new WipeUpTransition(context);
+                break;
+            case RenderConstants.Transition2.WIPE_DOWN:
+                transition = new WipeDownTransition(context);
                 break;
             default:
                 transition = new BaseTransition(context);

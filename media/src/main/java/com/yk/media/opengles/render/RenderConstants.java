@@ -249,5 +249,25 @@ public interface RenderConstants {
          * 移动向右下
          */
         int MOVE_RIGHT_DOWN = 7;
+
+        /**
+         * 抹掉向左
+         */
+        int WIPE_LEFT = 8;
+
+        /**
+         * 抹掉向右
+         */
+        int WIPE_RIGHT = 9;
+
+        /**
+         * 抹掉向上
+         */
+        int WIPE_UP = 10;
+
+        /**
+         * 抹掉向下
+         */
+        int WIPE_DOWN = 11;
     }
 }
