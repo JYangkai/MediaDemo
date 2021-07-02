@@ -1,6 +1,7 @@
 package com.yk.mediademo.ui.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,6 +47,16 @@ public class ImageTransition2Activity extends AppCompatActivity implements IActi
             @Override
             public void onClickTransition(BaseRenderBean bean) {
                 transitionView.start(bean);
+            }
+        });
+        transitionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (transitionListView.getVisibility() == View.VISIBLE) {
+                    transitionListView.setVisibility(View.GONE);
+                } else {
+                    transitionListView.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
