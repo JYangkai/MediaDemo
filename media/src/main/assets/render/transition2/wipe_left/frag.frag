@@ -10,5 +10,5 @@ void main(){
 
     float progress = 1.0 - uProgress;
 
-    gl_FragColor = mix(sourceColor, sourceColor2, smoothstep(progress, progress + OFFSET, vCoordinate.x));
+    gl_FragColor = mix(sourceColor, sourceColor2, smoothstep(progress - OFFSET, progress, vCoordinate.x));
 }
