@@ -17,6 +17,8 @@ import com.yk.media.opengles.render.transition2.WipeCenterTransition;
 import com.yk.media.opengles.render.transition2.WipeCircleTransition;
 import com.yk.media.opengles.render.transition2.WipeDownTransition;
 import com.yk.media.opengles.render.transition2.WipeLeftTransition;
+import com.yk.media.opengles.render.transition2.WipeLeftUpTransition;
+import com.yk.media.opengles.render.transition2.WipeRightDownTransition;
 import com.yk.media.opengles.render.transition2.WipeRightTransition;
 import com.yk.media.opengles.render.transition2.WipeUpTransition;
 import com.yk.media.opengles.render.transition2.base.BaseTransition;
@@ -41,6 +43,8 @@ public class Transition2Utils {
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_RIGHT, "抹掉向右", 5000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_UP, "抹掉向上", 5000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_DOWN, "抹掉向下", 5000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_LEFT_UP, "抹掉向左上", 5000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_RIGHT_DOWN, "抹掉向右下", 5000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_CENTER, "抹掉中心", 5000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_CIRCLE, "抹掉圆形", 5000));
     }
@@ -83,6 +87,12 @@ public class Transition2Utils {
                 break;
             case RenderConstants.Transition2.WIPE_DOWN:
                 transition = new WipeDownTransition(context);
+                break;
+            case RenderConstants.Transition2.WIPE_LEFT_UP:
+                transition = new WipeLeftUpTransition(context);
+                break;
+            case RenderConstants.Transition2.WIPE_RIGHT_DOWN:
+                transition = new WipeRightDownTransition(context);
                 break;
             case RenderConstants.Transition2.WIPE_CENTER:
                 transition = new WipeCenterTransition(context);

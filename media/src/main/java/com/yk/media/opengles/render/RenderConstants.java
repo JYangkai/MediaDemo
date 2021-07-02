@@ -271,13 +271,33 @@ public interface RenderConstants {
         int WIPE_DOWN = 11;
 
         /**
+         * 抹掉向左上
+         */
+        int WIPE_LEFT_UP = 12;
+
+        /**
+         * 抹掉向右下
+         */
+        int WIPE_RIGHT_DOWN = 13;
+
+        /**
+         * 抹掉向左下
+         */
+        int WIPE_LEFT_DOWN = 14;
+
+        /**
+         * 抹掉向右上
+         */
+        int WIPE_RIGHT_UP = 15;
+
+        /**
          * 抹掉中心
          */
-        int WIPE_CENTER = 12;
+        int WIPE_CENTER = 16;
 
         /**
          * 抹掉圆形
          */
-        int WIPE_CIRCLE = 13;
+        int WIPE_CIRCLE = 17;
     }
 }
