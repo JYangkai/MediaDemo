@@ -269,5 +269,10 @@ public interface RenderConstants {
          * 抹掉向下
          */
         int WIPE_DOWN = 11;
+
+        /**
+         * 抹掉中心
+         */
+        int WIPE_CENTER = 12;
     }
 }

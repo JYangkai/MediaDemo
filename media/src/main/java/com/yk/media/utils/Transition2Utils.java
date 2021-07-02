@@ -13,6 +13,7 @@ import com.yk.media.opengles.render.transition2.MoveRightDownTransition;
 import com.yk.media.opengles.render.transition2.MoveRightTransition;
 import com.yk.media.opengles.render.transition2.MoveRightUpTransition;
 import com.yk.media.opengles.render.transition2.MoveUpTransition;
+import com.yk.media.opengles.render.transition2.WipeCenterTransition;
 import com.yk.media.opengles.render.transition2.WipeDownTransition;
 import com.yk.media.opengles.render.transition2.WipeLeftTransition;
 import com.yk.media.opengles.render.transition2.WipeRightTransition;
@@ -39,6 +40,7 @@ public class Transition2Utils {
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_RIGHT, "抹掉向右", 5000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_UP, "抹掉向上", 5000));
         TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_DOWN, "抹掉向下", 5000));
+        TRANSITION_LIST.add(new BaseTransitionBean(RenderConstants.Transition2.WIPE_CENTER, "抹掉中心", 5000));
     }
 
     public static BaseTransition getTransition(Context context, BaseRenderBean bean) {
@@ -79,6 +81,9 @@ public class Transition2Utils {
                 break;
             case RenderConstants.Transition2.WIPE_DOWN:
                 transition = new WipeDownTransition(context);
+                break;
+            case RenderConstants.Transition2.WIPE_CENTER:
+                transition = new WipeCenterTransition(context);
                 break;
             default:
                 transition = new BaseTransition(context);
