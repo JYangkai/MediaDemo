@@ -6,6 +6,7 @@ import com.yk.mediademo.ui.activity.ImageListActivity;
 import com.yk.mediademo.ui.activity.ImageShowActivity;
 import com.yk.mediademo.ui.activity.ImageTransition2Activity;
 import com.yk.mediademo.ui.activity.ImageTransitionActivity;
+import com.yk.mediademo.ui.activity.PcmActivity;
 import com.yk.mediademo.ui.activity.RecordVideoActivity;
 import com.yk.mediademo.ui.activity.TakePhotoActivity;
 import com.yk.mediademo.ui.activity.TextureViewCameraActivity;
@@ -26,5 +27,6 @@ public class FunctionUtils {
         FUNCTION_LIST.add(new Function(Constants.Function.FUNCTION_VIDEO_LIST, VideoListActivity.class));
         FUNCTION_LIST.add(new Function(Constants.Function.FUNCTION_IMAGE_TRANSITION, ImageTransitionActivity.class));
         FUNCTION_LIST.add(new Function(Constants.Function.FUNCTION_IMAGE_TRANSITION_2, ImageTransition2Activity.class));
+        FUNCTION_LIST.add(new Function(Constants.Function.FUNCTION_PCM, PcmActivity.class));
     }
 }

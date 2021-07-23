@@ -47,6 +47,8 @@
         <activity
             android:name=".ui.activity.ImageTransition2Activity"
             android:theme="@style/FullscreenTheme" />
+
+        <activity android:name=".ui.activity.PcmActivity" />
     </application>
 
 </manifest>
