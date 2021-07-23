@@ -64,7 +64,7 @@ public class PcmRecorder {
         private final int audioFormat;
 
         /**
-         * 最小音频缓存buffer
+         * 音频缓存buffer
          */
         private int bufferSizeInByte;
 
