@@ -29,4 +29,28 @@
         android:layout_height="wrap_content"
         android:text="Stop Play" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnEncode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Encode" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnStopEncode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop Encode" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDecode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Decode" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnStopDecode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop Decode" />
+
 </LinearLayout>
