@@ -3,7 +3,6 @@ package com.yk.media.core.camera;
 import android.app.Activity;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
-import android.util.Log;
 
 import com.yk.media.data.base.Size;
 
@@ -12,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Camera1 implements ICamera {
-    private static final String TAG = "Camera1";
-
     /**
      * Camera
      */
@@ -88,7 +85,7 @@ public class Camera1 implements ICamera {
             Camera.Parameters parameters = camera.getParameters();
             List<Camera.Size> previewSizeList = parameters.getSupportedPreviewSizes();
             if (cameraSize.getWidth() <= 0 || cameraSize.getHeight() <= 0) {
-                Camera.Size size = findTheBestSize(previewSizeList,
+                Camera.Size size = CameraUtils.findTheBestSize(previewSizeList,
                         activity.getResources().getDisplayMetrics().widthPixels,
                         activity.getResources().getDisplayMetrics().heightPixels);
                 cameraSize.setWidth(size.width);
@@ -120,36 +117,6 @@ public class Camera1 implements ICamera {
         } catch (IOException e) {
             onCameraError(e);
         }
-    }
-
-    /**
-     * 寻找最合适的尺寸
-     */
-    private Camera.Size findTheBestSize(List<Camera.Size> sizeList, int screenW, int screenH) {
-        if (sizeList == null || sizeList.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-
-        Log.d(TAG, "findTheBestSize: screenW:" + screenW + " screenH:" + screenH);
-
-        Camera.Size bestSize = sizeList.get(0);
-        for (Camera.Size size : sizeList) {
-            int width = size.height;
-            int height = size.width;
-
-            Log.d(TAG, "findTheBestSize: width:" + width + " height:" + height);
-
-            float ratioW = (float) width / screenW;
-            float ratioH = (float) height / screenH;
-
-            Log.d(TAG, "findTheBestSize: ratioW:" + ratioW + " ratioH:" + ratioH);
-
-            if (ratioW == ratioH) {
-                bestSize = size;
-                break;
-            }
-        }
-        return bestSize;
     }
 
     @Override

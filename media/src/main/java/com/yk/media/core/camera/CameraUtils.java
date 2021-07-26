@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.hardware.Camera;
 import android.view.Surface;
 
+import java.util.List;
+
 public class CameraUtils {
     /**
      * 获取摄像头旋转角度
@@ -36,5 +38,29 @@ public class CameraUtils {
             result = (info.orientation - degrees + 360) % 360;
         }
         return result;
+    }
+
+    /**
+     * 寻找最合适的尺寸
+     */
+    public static Camera.Size findTheBestSize(List<Camera.Size> sizeList, int screenW, int screenH) {
+        if (sizeList == null || sizeList.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+
+        Camera.Size bestSize = sizeList.get(0);
+        for (Camera.Size size : sizeList) {
+            int width = size.height;
+            int height = size.width;
+
+            float ratioW = (float) width / screenW;
+            float ratioH = (float) height / screenH;
+
+            if (ratioW == ratioH) {
+                bestSize = size;
+                break;
+            }
+        }
+        return bestSize;
     }
 }
