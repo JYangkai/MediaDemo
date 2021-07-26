@@ -49,6 +49,7 @@
             android:theme="@style/FullscreenTheme" />
 
         <activity android:name=".ui.activity.PcmActivity" />
+        <activity android:name=".ui.activity.YuvActivity" />
     </application>
 
 </manifest>
