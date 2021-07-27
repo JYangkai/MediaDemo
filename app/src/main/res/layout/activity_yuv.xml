@@ -1,20 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRecord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Record" />
+    <TextureView
+        android:id="@+id/preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnStopRecord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stop Record" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Record" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnStopRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop Record" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEncode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Encode" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnStopEncode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop Encode" />
+
+    </LinearLayout>
+
+</RelativeLayout>
