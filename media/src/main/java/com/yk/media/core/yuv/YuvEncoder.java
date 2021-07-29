@@ -33,6 +33,8 @@ public class YuvEncoder extends MediaCodec.Callback implements Camera.PreviewCal
     private byte[] data;
     private int width;
     private int height;
+    private int facing;
+    private int orientation;
 
     private MediaCodec mediaCodec;
 
@@ -100,8 +102,9 @@ public class YuvEncoder extends MediaCodec.Callback implements Camera.PreviewCal
         mediaMuxer = null;
     }
 
-    private void openCamera(Activity activity, SurfaceTexture surfaceTexture, int id) {
-        camera = Camera.open(id);
+    private void openCamera(Activity activity, SurfaceTexture surfaceTexture, int facing) {
+        this.facing = facing;
+        camera = Camera.open(facing);
         if (camera == null) {
             return;
         }
@@ -119,7 +122,7 @@ public class YuvEncoder extends MediaCodec.Callback implements Camera.PreviewCal
         parameters.setPreviewSize(width, height);
         parameters.setPreviewFormat(ImageFormat.NV21);
         camera.setParameters(parameters);
-        camera.setDisplayOrientation(CameraUtils.getDisplayOrientation(activity, id));
+        camera.setDisplayOrientation(orientation = CameraUtils.getDisplayOrientation(activity, facing));
         camera.addCallbackBuffer(data);
         camera.setPreviewCallbackWithBuffer(this);
         try {
@@ -192,12 +195,7 @@ public class YuvEncoder extends MediaCodec.Callback implements Camera.PreviewCal
 
         Log.d(TAG, "onPreviewFrame: queue offer:" + this.data.length);
 
-//        YuvUtils.nv21ToNv12(this.data, width, height);
-
-        byte[] nv12 = new byte[this.data.length];
-        YuvUtils.rotateAndToNV12(this.data, nv12, width, height);
-
-        queue.offer(nv12);
+        queue.offer(YuvUtils.cameraNv21ToNv12(this.data, width, height, facing, orientation));
     }
 
     @Override
