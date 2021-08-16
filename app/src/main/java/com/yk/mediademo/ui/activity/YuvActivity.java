@@ -2,6 +2,7 @@ package com.yk.mediademo.ui.activity;
 
 import android.graphics.SurfaceTexture;
 import android.os.Bundle;
+import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.yk.media.core.yuv.YuvDecoder;
 import com.yk.media.core.yuv.YuvEncoder;
 import com.yk.media.core.yuv.YuvRecord;
 import com.yk.mediademo.R;
@@ -26,11 +28,15 @@ public class YuvActivity extends AppCompatActivity implements IActivityInit {
     private AppCompatButton btnEncode;
     private AppCompatButton btnStopEncode;
 
+    private AppCompatButton btnDecode;
+    private AppCompatButton btnStopDecode;
+
     private String path;
     private String encodePath;
 
     private final YuvRecord yuvRecord = new YuvRecord();
     private final YuvEncoder yuvEncoder = new YuvEncoder();
+    private final YuvDecoder yuvDecoder = new YuvDecoder();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +56,9 @@ public class YuvActivity extends AppCompatActivity implements IActivityInit {
 
         btnEncode = findViewById(R.id.btnEncode);
         btnStopEncode = findViewById(R.id.btnStopEncode);
+
+        btnDecode = findViewById(R.id.btnDecode);
+        btnStopDecode = findViewById(R.id.btnStopDecode);
     }
 
     @Override
@@ -109,6 +118,44 @@ public class YuvActivity extends AppCompatActivity implements IActivityInit {
             @Override
             public void onClick(View v) {
                 yuvEncoder.stop();
+            }
+        });
+
+        btnDecode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (preview.isAvailable()) {
+                    yuvDecoder.start(encodePath, new Surface(preview.getSurfaceTexture()));
+                } else {
+                    preview.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
+                        @Override
+                        public void onSurfaceTextureAvailable(@NonNull SurfaceTexture surface, int width, int height) {
+                            yuvDecoder.start(encodePath, new Surface(surface));
+                        }
+
+                        @Override
+                        public void onSurfaceTextureSizeChanged(@NonNull SurfaceTexture surface, int width, int height) {
+
+                        }
+
+                        @Override
+                        public boolean onSurfaceTextureDestroyed(@NonNull SurfaceTexture surface) {
+                            return false;
+                        }
+
+                        @Override
+                        public void onSurfaceTextureUpdated(@NonNull SurfaceTexture surface) {
+
+                        }
+                    });
+                }
+            }
+        });
+
+        btnStopDecode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                yuvDecoder.stop();
             }
         });
     }
