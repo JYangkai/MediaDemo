@@ -50,6 +50,10 @@
 
         <activity android:name=".ui.activity.PcmActivity" />
         <activity android:name=".ui.activity.YuvActivity" />
+
+        <activity
+            android:name=".ui.activity.VideoPlayActivity"
+            android:theme="@style/FullscreenTheme" />
     </application>
 
 </manifest>

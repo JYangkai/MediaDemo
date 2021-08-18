@@ -12,5 +12,6 @@ public interface Constants {
         String FUNCTION_IMAGE_TRANSITION_2 = "图片转场2";
         String FUNCTION_PCM = "PCM";
         String FUNCTION_YUV = "YUV";
+        String FUNCTION_VIDEO_PLAY = "视频播放";
     }
 }
