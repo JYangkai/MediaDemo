@@ -11,6 +11,8 @@ import com.yk.media.opengles.render.bean.filter.ScaleBean;
 import com.yk.media.opengles.render.filter.BaseFilter;
 import com.yk.media.opengles.render.filter.BlueLineChallengeHFilter;
 import com.yk.media.opengles.render.filter.BlueLineChallengeVFilter;
+import com.yk.media.opengles.render.filter.ConveyorBeltHFilter;
+import com.yk.media.opengles.render.filter.ConveyorBeltVFilter;
 import com.yk.media.opengles.render.filter.GaussianBlurFilter;
 import com.yk.media.opengles.render.filter.GrayFilter;
 import com.yk.media.opengles.render.filter.MeanBlurFilter;
@@ -40,6 +42,8 @@ public class FilterUtils {
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.BLUE_LINE_CHALLENGE_H, "蓝线挑战（横向）"));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.BLUE_LINE_CHALLENGE_V, "蓝线挑战（纵向）"));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.RETAIN_FRAME, "保留帧"));
+        FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.CONVEYOR_BELT_H, "传送带（横向）"));
+        FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.CONVEYOR_BELT_V, "传送带（纵向）"));
     }
 
     public static BaseFilter getFilter(Context context, BaseRenderBean bean) {
@@ -74,6 +78,12 @@ public class FilterUtils {
                 break;
             case RenderConstants.Filter.RETAIN_FRAME:
                 filter = new RetainFrameFilter(context);
+                break;
+            case RenderConstants.Filter.CONVEYOR_BELT_H:
+                filter = new ConveyorBeltHFilter(context);
+                break;
+            case RenderConstants.Filter.CONVEYOR_BELT_V:
+                filter = new ConveyorBeltVFilter(context);
                 break;
             default:
                 filter = new BaseFilter(context);

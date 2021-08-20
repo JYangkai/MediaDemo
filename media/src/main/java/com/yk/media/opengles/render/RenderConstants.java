@@ -89,6 +89,16 @@ public interface RenderConstants {
          * 保留帧
          */
         int RETAIN_FRAME = 9;
+
+        /**
+         * 传送带（横向）
+         */
+        int CONVEYOR_BELT_H = 10;
+
+        /**
+         * 传送带（纵向）
+         */
+        int CONVEYOR_BELT_V = 11;
     }
 
     /**
