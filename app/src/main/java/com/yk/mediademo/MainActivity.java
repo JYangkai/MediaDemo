@@ -20,6 +20,9 @@ import com.yk.mediademo.utils.FunctionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 主界面
+ */
 public class MainActivity extends AppCompatActivity implements IActivityInit {
 
     private RecyclerView rvFunction;
