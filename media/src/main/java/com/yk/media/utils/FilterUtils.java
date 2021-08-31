@@ -13,14 +13,18 @@ import com.yk.media.opengles.render.filter.BlueLineChallengeHFilter;
 import com.yk.media.opengles.render.filter.BlueLineChallengeVFilter;
 import com.yk.media.opengles.render.filter.ConveyorBeltHFilter;
 import com.yk.media.opengles.render.filter.ConveyorBeltVFilter;
+import com.yk.media.opengles.render.filter.FourPartFilter;
 import com.yk.media.opengles.render.filter.GaussianBlurFilter;
 import com.yk.media.opengles.render.filter.GrayFilter;
 import com.yk.media.opengles.render.filter.MeanBlurFilter;
 import com.yk.media.opengles.render.filter.MotionBlurFilter;
+import com.yk.media.opengles.render.filter.NinePartFilter;
 import com.yk.media.opengles.render.filter.PipFilter;
 import com.yk.media.opengles.render.filter.RetainFrameFilter;
 import com.yk.media.opengles.render.filter.ScaleFilter;
 import com.yk.media.opengles.render.filter.SkewFilter;
+import com.yk.media.opengles.render.filter.ThreePartFilter;
+import com.yk.media.opengles.render.filter.TwoPartFilter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +48,10 @@ public class FilterUtils {
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.RETAIN_FRAME, "保留帧"));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.CONVEYOR_BELT_H, "传送带（横向）"));
         FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.CONVEYOR_BELT_V, "传送带（纵向）"));
+        FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.TWO_PART, "两分屏"));
+        FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.THREE_PART, "三分屏"));
+        FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.FOUR_PART, "四分屏"));
+        FILTER_LIST.add(new BaseRenderBean(RenderConstants.Filter.NINE_PART, "九分屏"));
     }
 
     public static BaseFilter getFilter(Context context, BaseRenderBean bean) {
@@ -84,6 +92,18 @@ public class FilterUtils {
                 break;
             case RenderConstants.Filter.CONVEYOR_BELT_V:
                 filter = new ConveyorBeltVFilter(context);
+                break;
+            case RenderConstants.Filter.TWO_PART:
+                filter = new TwoPartFilter(context);
+                break;
+            case RenderConstants.Filter.THREE_PART:
+                filter = new ThreePartFilter(context);
+                break;
+            case RenderConstants.Filter.FOUR_PART:
+                filter = new FourPartFilter(context);
+                break;
+            case RenderConstants.Filter.NINE_PART:
+                filter = new NinePartFilter(context);
                 break;
             default:
                 filter = new BaseFilter(context);

@@ -99,6 +99,26 @@ public interface RenderConstants {
          * 传送带（纵向）
          */
         int CONVEYOR_BELT_V = 11;
+
+        /**
+         * 两分屏
+         */
+        int TWO_PART = 12;
+
+        /**
+         * 三分屏
+         */
+        int THREE_PART = 13;
+
+        /**
+         * 四分屏
+         */
+        int FOUR_PART = 14;
+
+        /**
+         * 九分屏
+         */
+        int NINE_PART = 15;
     }
 
     /**
